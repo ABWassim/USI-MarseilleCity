@@ -1,0 +1,25 @@
+{
+  "name": "microservice-users",
+  "version": "1.0.0",
+  "description": "Microservice for users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ABWassim/USI-MarseilleCity.git"
+  },
+  "keywords": [
+    "users"
+  ],
+  "author": "Wassim Ahmed-Belkacem - Emie Delpine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ABWassim/USI-MarseilleCity/issues"
+  },
+  "homepage": "https://github.com/ABWassim/USI-MarseilleCity#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
