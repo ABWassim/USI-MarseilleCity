@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variable.scss";
+
+html,body{
+    background: $backgroundcolor !important;
+    height: 100vh;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
