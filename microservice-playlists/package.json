@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/ABWassim/USI-MarseilleCity#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4"
   }
 }

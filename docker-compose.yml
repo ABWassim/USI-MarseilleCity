@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+
+  backend-users:
+    restart: on-failure
+    image: backend-users
+    environment: 
+      - MONGODB_CONNSTRING=mongodb://root:root@db-users
+    ports:
+      - 3000:3000
+
+  backend-videos:
+    restart: on-failure
+    image: backend-videos
+    ports:
+      - 3001:3001
+
+  backend-playlists:
+    restart: on-failure
+    image: backend-playlists
+    environment: 
+      - MONGODB_CONNSTRING=mongodb://root:root@db-playlists
+    ports:
+      - 3002:3002
+
+  
+  
+  
+  
+
+
+
