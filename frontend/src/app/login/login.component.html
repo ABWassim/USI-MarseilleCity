@@ -12,7 +12,7 @@
             <div class="form-group">
                 <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
             </div>
-            <!-- <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div> -->
+            <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
             <button (click)="affichage()" type="submit" class="btn btn-primary">Se connecter</button>
             <p>Vous n’avez pas de compte ? <a href="#">S’inscrire.</a></p>
         </div>
