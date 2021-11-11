@@ -3,7 +3,7 @@ function sendMessage (res, _data) {
 }
 
 function sendError (res, _reason) {
-    res.json({ status: 'error', reason: _reason});
+    res.json({ status: 'error', data: {reason: _reason}});
 }
 
 module.exports = { sendMessage, sendError };
