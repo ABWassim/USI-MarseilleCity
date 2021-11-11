@@ -13,7 +13,7 @@ import {environment} from '../../environments/environment';
 })
 
 export class LoginComponent implements OnInit {
-  username = '';
+  mail = '';
   password = '';
   errorMessage = "";
   phpData: Phpdata = {status: '', data: null};
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   affichage(): void {
-    this.authservice.sendAuthentication(this.username, this.password).subscribe(
+    this.authservice.sendAuthentication(this.mail, this.password).subscribe(
       reponse => {
         this.authservice.finalizeAuthentication(reponse);
         if (this.authservice.isAuthenticated){

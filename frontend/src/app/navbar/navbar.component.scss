@@ -1,4 +1,5 @@
 @import "../../variable.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .navbar{
     justify-content: left;
@@ -8,13 +9,26 @@
         font-weight: 600;
     }
     .right{
-        .icon{
+        .bi{
             position: absolute;
-            right: 0;
-            width: 30px;
+            font-size: 25px;
             height: auto;
             margin-left: 2rem;
+            color: white;
+            padding: 0.5rem 1rem 0.5rem 1rem;
         }
+        .bi-music-note-list{
+            right: 4rem;
+            top: 0;
+        }
+        .bi-person-fill{
+            right: 0;
+            top: 0;
+        }
+        .bi:hover{
+            box-shadow: $boutongris 1px 1px 5px;
+        }
+
     }
 }
 .form-inline{
@@ -28,15 +42,15 @@
     }
     .btn{
         width: 22%;
-        background-color: $boutongris;
-        color: $violetbouton;
+        background-color: $rose;
+        color: white;
         border: none;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         transition: 0.3s;
     }
     .btn:hover{
-        background-color: $violetbouton;
-        color: $boutongris;
+        background-color: white;
+        color: $rose;
         border: solid 1px white;
     }
     input::placeholder{
