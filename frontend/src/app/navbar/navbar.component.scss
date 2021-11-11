@@ -7,6 +7,15 @@
         color: white;
         font-weight: 600;
     }
+    .right{
+        .icon{
+            position: absolute;
+            right: 0;
+            width: 30px;
+            height: auto;
+            margin-left: 2rem;
+        }
+    }
 }
 .form-inline{
     margin-left: 25%;
