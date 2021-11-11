@@ -8,7 +8,7 @@ const port = 3000
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors())
+app.use(cors({credentials: true, origin: true}));
 
 const uri = "mongodb+srv://root:twRRQWwuHUuEl3Ts@db-users.avxcs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
