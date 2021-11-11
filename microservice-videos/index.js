@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use(bodyParser.json());
 
 const {google} = require('googleapis')
