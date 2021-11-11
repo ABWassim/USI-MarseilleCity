@@ -15,7 +15,7 @@ export class AuthService {
 
   sendAuthentication(loginUser: string, passwordUser: string): Observable<Phpdata>{
     const data = {
-      login: loginUser,
+      mail: loginUser,
       password: passwordUser
     };
     return this.msgservice.sendMessage(environment.debutUrlUser + '/checkLogin', data);
