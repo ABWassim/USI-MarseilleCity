@@ -1,0 +1,60 @@
+@import "../../variable.scss";
+
+#loginContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+div.logo{
+    width: 50%;
+    
+    img{
+        width: 70px;
+        height: auto;
+    }
+    h2{
+        color: white;
+        font-weight: 700;
+        font-size: 40px;
+    }
+}
+
+.connexion{
+    width: 50%;
+    .connexion-container{
+        width: 50%;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+    }
+    button{
+        width: 100%;
+        background-color: $violetbouton;
+        border: none;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+        transition: 0.3s;
+    }
+    button:hover{
+        background-color: #A680F8;
+    }
+    p{
+        margin-bottom: 0;
+    }
+    .form-control{
+        border-right: none !important;
+        border-top: none !important;
+        border-left: none !important;
+        box-shadow: none !important;
+        border-radius: 0;
+        border-bottom: solid 2px $violetbouton;
+    }
+    input::placeholder {
+        color: $violetbouton;
+    }      
+}
