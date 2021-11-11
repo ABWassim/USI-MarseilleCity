@@ -15,12 +15,13 @@ const uri = "mongodb+srv://root:twRRQWwuHUuEl3Ts@db-users.avxcs.mongodb.net/myFi
 let db
  
 MongoClient.connect(uri, function(err, client) {
-  console.log("Connected successfully to server");
   db = client.db("users");
 });
 
 const checkLogin = require ('./checkLogin');
+const createAccount = require('./createAccount')
 app.post('/checkLogin', (req, res) => {checkLogin(req, res, db);});
+app.post('/createAccount', (req, res) => {createAccount(req, res, db);});
 
 
 app.listen(3000, () => {console.log ('users listening on port 3000')});
