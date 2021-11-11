@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  debutUrl: 'http://127.0.0.1:4200'
+  debutUrl: 'http://127.0.0.1:3000'
 };
 
 /*
