@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MessageService} from '../message.service';
+import {environment} from '../../environments/environment';
 
 export interface Video {
   title: string;
@@ -25,7 +26,7 @@ export class VideoComponent implements OnInit {
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.msgservice.sendMessage('getVideos', null).subscribe(
+    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', null).subscribe(
       reponse => {
         this.listeVideos = reponse.data;
       }

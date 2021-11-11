@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  debutUrl: 'http://127.0.0.1:3000'
+  debutUrlUser: 'http://127.0.0.1:3000',
+  debutUrlVideo: 'http://127.0.0.1:3001',
 };
 
 /*

@@ -20,8 +20,8 @@ export class MessageService {
       formData.set(i, data[i]);
     }
     */
-    const fullUrl = environment.debutUrl + '/' + url;
+    // const fullUrl = environment.debutUrl + '/' + url;
 
-    return this.http.post<Phpdata>(fullUrl, data, {withCredentials: true});
+    return this.http.post<Phpdata>(url, data, {withCredentials: true});
   }
 }

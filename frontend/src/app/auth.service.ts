@@ -18,7 +18,7 @@ export class AuthService {
       login: loginUser,
       password: passwordUser
     };
-    return this.msgservice.sendMessage('checkLogin', data);
+    return this.msgservice.sendMessage(environment.debutUrlUser + '/checkLogin', data);
   }
 
   finalizeAuthentication(data: Phpdata): void{
