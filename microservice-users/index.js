@@ -19,12 +19,8 @@ MongoClient.connect(uri, function(err, client) {
   db = client.db("users");
 });
 
+const checkLogin = require ('./checkLogin');
+app.post('/checkLogin', (req, res) => {checkLogin(req, res, db);});
 
-app.post('/test', (req, res) => {
-  db.collection("users").find({}).toArray(function(err, result) {
-    if (err) throw err;
-    res.send(result);
-  });
-})
 
 app.listen(3000, () => {console.log ('users listening on port 3000')});

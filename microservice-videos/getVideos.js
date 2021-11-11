@@ -1,4 +1,3 @@
-const { query } = require('express');
 const {sendMessage, sendError} = require('./message');
 
 function getVimeoVideos(vimeoClient, query) {
