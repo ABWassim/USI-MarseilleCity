@@ -13,7 +13,6 @@ module.exports.getSession = getSession;
 // message qui sera renvoyé à Angular. Si le cookie actuel
 // est "vieux", on en recrée ici un nouveau.
 function setSessionCookie (req, res, session) {
-    console.log('Appelle de sessionJwt.createSessionCookie')
     sessionJwt.createSessionCookie(req, res, session);
 }
 module.exports.setSessionCookie = setSessionCookie;

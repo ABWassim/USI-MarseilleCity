@@ -1,9 +1,9 @@
-function sendMessage (res, data) {
-    res.json ({ status: 'ok', data: data });
+function sendMessage (res, _data) {
+    res.json({ status: 'ok', data: _data });
 }
 
-function sendError (res, reason) {
-    res.json ({ status: 'error', data: {reason: reason }});
+function sendError (res, _reason) {
+    res.json({ status: 'error', reason: _reason});
 }
 
 module.exports = { sendMessage, sendError };

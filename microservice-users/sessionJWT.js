@@ -47,15 +47,12 @@ function createSessionCookie(req, res, payload) {
     }
     else {
         // on crée un nouveau cookie
-        console.log('Appelle de createSessionJWT')
         jwtToken = createSessionJWT(payload.userId);
     }
 
     // on renvoie le cookie au client
     // on met le secure à false afin de pouvoir utiliser http plutôt que https
-    console.log('Appelle de res.cookie')
     res.cookie('SESSIONID', jwtToken, {httpOnly:true, secure:false});
-    console.log('Fin de res.cookie')
 }
 module.exports.createSessionCookie = createSessionCookie;
 
