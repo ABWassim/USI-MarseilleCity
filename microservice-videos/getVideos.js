@@ -12,6 +12,7 @@ function getVimeoVideos(vimeoClient, query) {
         }
 
         const titles = body.data.map((item) => item.name);
+        const uris = body.data.map((item) => item.uri);
         const urlVideos = body.data.map((item) => item.link);
         const channels = body.data.map((item) => item.user.name);
         const urlChannels = body.data.map((item) => item.user.link);
@@ -22,13 +23,15 @@ function getVimeoVideos(vimeoClient, query) {
         var allVideos = []
         for (var i = 0 ; i < titles.length ; i++){
           allVideos.push({
-            title : titles[i],
-            urlVideo : urlVideos[i],
-            channel : channels[i],
-            urlChannel : urlChannels[i],
-            date : dates[i],
-            thumbnail : thumbnails[i],
-            description : descriptions[i]
+              id: (uris[i].split('/'))[2],
+              title : titles[i],
+              urlVideo : urlVideos[i],
+              channel : channels[i],
+              urlChannel : urlChannels[i],
+              date : dates[i],
+              thumbnail : thumbnails[i],
+              description : descriptions[i],
+              provider: 'vimeo'
           });
         }
         resolve(allVideos);
@@ -58,13 +61,15 @@ async function getYoutubeVideos(youtubeClient, query) {
         var allVideos = []
         for (var i = 0 ; i < titles.length ; i++){
           allVideos.push({
-            title : titles[i],
-            urlVideo : 'https://www.youtube.com/watch?v=' + urlVideos[i],
-            channel : channels[i],
-            urlChannel : 'https://www.youtube.com/c/' + urlChannels[i],
-            date : dates[i],
-            thumbnail : thumbnails[i],
-            description : descriptions[i]
+              id : urlVideos[i],
+              title : titles[i],
+              urlVideo : 'https://www.youtube.com/watch?v=' + urlVideos[i],
+              channel : channels[i],
+              urlChannel : 'https://www.youtube.com/c/' + urlChannels[i],
+              date : dates[i],
+              thumbnail : thumbnails[i],
+              description : descriptions[i],
+              provider: 'youtube'
           });
         }
 
