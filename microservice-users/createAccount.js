@@ -20,7 +20,10 @@ async function createAccount(req, res, db)
     if (!req.body.hasOwnProperty('nationality'))
         return sendError(res, 'No nationality was provided');
 
-    const existingUser = await getUser(db, {email: req.body.email});
+    const [code1, existingUser] = await getUser(db, {email: req.body.email});
+    if (code1 === 'error'){
+        return sendError(res, existingUser);
+    }
     if (existingUser.length !== 0){
         return sendError(res, 'Email already used');
     }
@@ -34,7 +37,10 @@ async function createAccount(req, res, db)
         valid: 1
     }
 
-    const newUserId = await insertUser(db, doc);
+    const [code2, newUserId] = await insertUser(db, doc);
+    if (code2 === 'error'){
+        return sendError(res, newUserId);
+    }
     auth.setSessionCookie(req, res, {userId: newUserId});
     sendMessage(res, 'Account created and user authenticated');
 }
