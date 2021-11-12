@@ -1,14 +1,10 @@
-<!-- <div class="parent">
-    <ul class="list-group list-group-horizontal">
-        <li class="list-group-item" *ngFor="let video of listeVideos">
-            <a><img src={{video.thumbnail}}></a>
-            <p>{{ video.title }}</p>
-        </li>
-    </ul>
-</div> -->
-
 <div class="grid">
     <ng-container *ngFor="let video of listeVideos">
-        <label>{{video.title}}</label>
+        <a [routerLink]="['/video', video.title]" class="stretched-link">
+            <app-zoomvideo [zoom_video]="video">
+                <img src={{video.thumbnail}}>
+                <p>{{video.title}}</p>
+            </app-zoomvideo>
+        </a>
     </ng-container>
 </div>

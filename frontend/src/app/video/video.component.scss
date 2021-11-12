@@ -1,4 +1,19 @@
+@import "../../variable.scss";
+
 .grid {
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    width: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Create 2 columns and auto-place rows */
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr; /* Create 2 columns and auto-place rows */
+    ng-container{
+        display: block;
+    }
+    a{
+        color: white;
+    }
+    img{
+        width: 320px;
+        height: 220px;
+    }
 }

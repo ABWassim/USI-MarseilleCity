@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { VideoComponent } from './video/video.component';
+import { ZoomvideoComponent } from './zoomvideo/zoomvideo.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { VideoComponent } from './video/video.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    VideoComponent
+    VideoComponent,
+    ZoomvideoComponent
   ],
   imports: [
     BrowserModule,
