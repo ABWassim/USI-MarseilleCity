@@ -4,6 +4,7 @@ import {MessageService} from '../message.service';
 import {environment} from '../../environments/environment';
 
 export interface Video {
+  id : string,
   title: string;
   urlVideo : string;
   channel : string;
@@ -11,7 +12,7 @@ export interface Video {
   date : Date;
   thumbnail : string;
   description : string;
-  platform : string;
+  provider : string
 }
 
 @Component({

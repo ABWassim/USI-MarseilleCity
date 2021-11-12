@@ -7,7 +7,7 @@ import { ZoomvideoComponent } from './zoomvideo/zoomvideo.component';
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
   {path : 'home', component : HomeComponent},
-  {path : 'video/:title', component : ZoomvideoComponent}
+  {path : 'video/:id', component : ZoomvideoComponent}
 ];
 
 @NgModule({

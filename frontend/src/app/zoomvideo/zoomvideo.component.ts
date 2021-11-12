@@ -10,25 +10,30 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./zoomvideo.component.scss']
 })
 export class ZoomvideoComponent implements OnInit {
-  titleVideo = this.route.snapshot.paramMap.get('title');
+  concat = this.route.snapshot.paramMap.get('id');
   videozoom: any;
   urlVideoYoutube: string = "";
   urlVideoVimeo: string = "";
+  splitted = this.concat.split("-", 2); 
+  idVideo = this.splitted[0];
+  provide = this.splitted[1];
+
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const data = {
-      query: "nature"
+      id: this.idVideo,
+      provider : this.provide
     };
-    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideo', data).subscribe(
+    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideoById', data).subscribe(
       reponse => {
         this.videozoom = reponse.data;
-        if (this.videozoom.platform == "Youtube"){
-          this.urlVideoYoutube = "http://www.youtube.com/embed/" + this.videozoom.idVideo;
+        if (this.provide == "youtube"){
+          this.urlVideoYoutube = "http://www.youtube.com/embed/" + this.videozoom.id;
         }
         else{
-          this.urlVideoVimeo = "https://player.vimeo.com/video/" + this.videozoom.idVideo;
+          this.urlVideoVimeo = "https://player.vimeo.com/video/" + this.videozoom.id;
         }
         console.log(this.videozoom);
       }
