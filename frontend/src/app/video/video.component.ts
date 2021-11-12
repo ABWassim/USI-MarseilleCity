@@ -28,7 +28,7 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
     const data = {
-      query: "nature"
+      query: "chien"
     };
     this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
       reponse => {

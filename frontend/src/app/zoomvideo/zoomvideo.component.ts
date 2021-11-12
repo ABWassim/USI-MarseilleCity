@@ -12,8 +12,7 @@ import {environment} from '../../environments/environment';
 export class ZoomvideoComponent implements OnInit {
   concat = this.route.snapshot.paramMap.get('id');
   videozoom: any;
-  urlVideoYoutube: string = "";
-  urlVideoVimeo: string = "";
+  newUrlVideo: string = "";
   splitted = this.concat.split("-", 2); 
   idVideo = this.splitted[0];
   provide = this.splitted[1];
@@ -30,12 +29,12 @@ export class ZoomvideoComponent implements OnInit {
       reponse => {
         this.videozoom = reponse.data;
         if (this.provide == "youtube"){
-          this.urlVideoYoutube = "http://www.youtube.com/embed/" + this.videozoom.id;
+          this.newUrlVideo = "https://www.youtube.com/embed/" + this.videozoom.id;
         }
         else{
-          this.urlVideoVimeo = "https://player.vimeo.com/video/" + this.videozoom.id;
+          this.newUrlVideo = "https://player.vimeo.com/video/" + this.videozoom.id;
         }
-        console.log(this.videozoom);
+        console.log(this.newUrlVideo);
       }
     );
   }
