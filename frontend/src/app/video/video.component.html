@@ -1,10 +1,8 @@
 <div class="grid">
     <ng-container *ngFor="let video of listeVideos">
         <a [routerLink]="['/video', video.title]" class="stretched-link">
-            <app-zoomvideo [zoom_video]="video">
-                <img src={{video.thumbnail}}>
-                <p>{{video.title}}</p>
-            </app-zoomvideo>
+            <img src={{video.thumbnail}}>
+            <p>{{video.title}}</p>
         </a>
     </ng-container>
 </div>

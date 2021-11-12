@@ -1,6 +1,9 @@
 @import "../../variable.scss";
-
+.stretched-link::after {
+    position: relative;
+}
 .grid {
+    z-index: 0;
     padding-top: 1rem;
     padding-left: 1.5rem;
     width: 100%;
