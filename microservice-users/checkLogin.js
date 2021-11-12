@@ -15,15 +15,19 @@ async function checkLogin(req, res, db)
         password: req.body.password
     };
 
-    const log = await getUser(db, doc);
+    const [code, log] = await getUser(db, doc);
 
-    if (log.length === 0){
+
+    if (code === 'error'){
+        return sendError(res, log);
+    }
+    else if (log.length === 0){
         return sendError(res, 'Wrong mail/password combination');
     }
     else if (log[0].valid === 0){
         return sendError(res, 'Account suspended');
     }
-    else{
+    else {
         const _userId = log[0]._id;
         auth.setSessionCookie(req, res, {userId: _userId});
         sendMessage(res, 'Authenticated');

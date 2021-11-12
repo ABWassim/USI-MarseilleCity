@@ -8,7 +8,7 @@ function getVimeoVideoById(vimeoClient, _id) {
             path: '/videos/' + _id,
         }, function (error, body, status_code, headers) {
             if (error) {
-                reject(error)
+                reject(['error', error])
             }
 
             const _title = body.name;
@@ -31,7 +31,7 @@ function getVimeoVideoById(vimeoClient, _id) {
                 provider : 'vimeo'
             }
 
-            resolve(video);
+            resolve(['ok', video]);
         })
     });
 
@@ -43,8 +43,6 @@ async function getYoutubeVideoById(youtubeClient, _id) {
             "part": ["snippet"],
             "id" : [_id]
         });
-
-        console.log(response.items)
 
         const _title = response.data.items[0].snippet.title;
         const _urlVideo = 'https://www.youtube.com/watch?v=' + _id;
@@ -66,10 +64,10 @@ async function getYoutubeVideoById(youtubeClient, _id) {
             provider : 'youtube'
         }
 
-        return video;
+        return ['ok', video];
     }
     catch (err) {
-        console.log(err);
+        return ['error', err];
     }
 }
 
@@ -83,20 +81,20 @@ async function getVideoById(req, res, youtubeClient, vimeoClient)
     const id = req.body.id;
     const provider = req.body.provider;
 
-    let video;
-
     if (provider === 'youtube'){
-        video = await getYoutubeVideoById(youtubeClient, id);
+        const [msg, video] = await getYoutubeVideoById(youtubeClient, id);
+        if (msg === 'error'){
+            return sendError(res, video);
+        }
+        sendMessage(res, video);
     }
     else {
-        video = await getVimeoVideoById(vimeoClient, id);
+        const [msg, video] = await getVimeoVideoById(vimeoClient, id);
+        if (msg === 'error'){
+            return sendError(res, video);
+        }
+        sendMessage(res, video);
     }
-
-    if (video === -1){
-        return sendError(res, 'Erreur Youtube');
-    }
-
-    sendMessage(res, video);
 }
 
 module.exports = getVideoById;
