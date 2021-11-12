@@ -1,6 +1,14 @@
-<p>video works!</p>
-<div class="parent">
-    <ul>
-        <li *ngFor="let video of listeVideos">{{ video.title }}</li>
+<!-- <div class="parent">
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item" *ngFor="let video of listeVideos">
+            <a><img src={{video.thumbnail}}></a>
+            <p>{{ video.title }}</p>
+        </li>
     </ul>
-</div> 
+</div> -->
+
+<div class="grid">
+    <ng-container *ngFor="let video of listeVideos">
+        <label>{{video.title}}</label>
+    </ng-container>
+</div>

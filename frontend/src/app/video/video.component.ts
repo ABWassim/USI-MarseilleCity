@@ -26,9 +26,13 @@ export class VideoComponent implements OnInit {
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', null).subscribe(
+    const data = {
+      query: "nature"
+    };
+    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
       reponse => {
         this.listeVideos = reponse.data;
+        console.log(this.listeVideos);
       }
     );
   }
