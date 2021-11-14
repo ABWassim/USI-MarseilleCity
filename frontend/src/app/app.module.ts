@@ -10,9 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { VideoComponent } from './video/video.component';
-import { SafePipeComponent } from './safe-pipe/safe-pipe.component';
 import { ZoomvideoComponent } from './zoomvideo/zoomvideo.component';
-
 
 @NgModule({
   declarations: [
@@ -21,8 +19,7 @@ import { ZoomvideoComponent } from './zoomvideo/zoomvideo.component';
     HomeComponent,
     NavbarComponent,
     VideoComponent,
-    ZoomvideoComponent,
-    SafePipeComponent
+    ZoomvideoComponent
   ],
   imports: [
     BrowserModule,

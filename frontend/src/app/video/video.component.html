@@ -1,6 +1,6 @@
 <div class="grid">
     <ng-container *ngFor="let video of listeVideos">
-        <a [routerLink]="['/video', video.id+ '-' +video.provider]" class="stretched-link">
+        <a [routerLink]="['/video', video.id + '-' + video.provider]" class="stretched-link">
             <img src={{video.thumbnail}}>
             <p>{{video.title}}</p>
         </a>
