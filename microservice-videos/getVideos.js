@@ -8,7 +8,7 @@ function getVimeoVideos(vimeoClient, query) {
         path: '/videos?per_page=10&sort=relevant&query=' + query,
       }, function (error, body, status_code, headers) {
         if (error) {
-          reject(error) 
+          reject(['error', error]) ;
         }
 
         const titles = body.data.map((item) => item.name);
@@ -34,7 +34,7 @@ function getVimeoVideos(vimeoClient, query) {
               provider: 'vimeo'
           });
         }
-        resolve(allVideos);
+        resolve(['ok', allVideos]);
       })
     });
     
@@ -73,10 +73,11 @@ async function getYoutubeVideos(youtubeClient, query) {
           });
         }
 
-        return allVideos;
+        return ['ok', allVideos];
     } 
       catch (err) {
-        return -1;
+        console.log(err);
+        return ['error', err];
     }
 }
 
@@ -87,11 +88,15 @@ async function getVideos(req, res, youtubeClient, vimeoClient)
 
   const query = req.body.query;
 
-  const youtubeVideos = await getYoutubeVideos(youtubeClient, query);
-  if (youtubeVideos === -1){
-    return sendError(res, 'Erreur Youtube');
+  const [msg1, youtubeVideos] = await getYoutubeVideos(youtubeClient, query);
+  if (msg1 === 'error'){
+    return sendError(res, youtubeVideos);
   }
-  const vimeoVideos = await getVimeoVideos(vimeoClient, query);
+
+  const [msg2, vimeoVideos] = await getVimeoVideos(vimeoClient, query);
+  if (msg2 === 'error'){
+      return sendError(res, vimeoVideos);
+  }
 
   sendMessage(res, youtubeVideos.concat(vimeoVideos));
 }
