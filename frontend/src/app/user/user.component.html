@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="profil"> 
+        <h2>Informations personnelles :</h2>
         <div class="form-group">
             <input [(ngModel)]="firstName" class="form-control" placeholder="Prénom">
         </div>
@@ -14,6 +15,7 @@
         <button (click)="affichage()" type="submit" class="btn btn-primary">Enregistrer</button>
     </div> 
     <div class="modifmdp"> 
+        <h2>Modification de mot de passe :</h2>
         <div class="form-group">
             <input [(ngModel)]="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Ancien mot de passe" required>
         </div>
