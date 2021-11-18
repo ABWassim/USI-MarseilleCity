@@ -20,7 +20,7 @@ export class ZoomvideoComponent implements OnInit {
   provide = this.splitted[1];
   url: SafeResourceUrl;
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private msgservice: MessageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit(): void {
     const data = {
@@ -39,9 +39,13 @@ export class ZoomvideoComponent implements OnInit {
         console.log(this.newUrlVideo);
       }
     );
+    this.url=this.getSafeURL();
   }
 
   getSafeURL(): SafeResourceUrl{
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.newUrlVideo);
+  }
+  
 }
-}
+
+

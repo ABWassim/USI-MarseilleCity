@@ -1,2 +1,11 @@
-<iframe title="YouTube" width="650" height="390" [src]="getSafeURL()" frameborder="0" allowfullscreen></iframe>
+<app-navbar></app-navbar>
+<div class="zoom_video">
+    <iframe title="YouTube" width="950" height="500" [src]="getSafeURL()" frameborder="0" allowfullscreen></iframe>
+    <div class="bloc_right">
+        <button type="button" class="btn">Ajouter</button>
+        <h2>{{videozoom.title}}</h2>
+    </div>
+</div>
+<!-- <app-video></app-video> -->
+
 

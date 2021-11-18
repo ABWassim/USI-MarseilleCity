@@ -1,0 +1,29 @@
+<div id = "InscriptionContainer">
+    <div class="logo">
+        <img src="../../assets/Image1.png">
+        <h2>WatchIt</h2>
+    </div>
+
+    <div class="inscription"> 
+        <div class="inscription-container">
+            <div class="form-group">
+                <input [(ngModel)]="email" class="form-control" id="exampleInputEmail1" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="firstName" type="fisrtName" class="form-control" id="exampleInputPassword1" placeholder="Prénom">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="lastName" type="lastName" class="form-control" id="exampleInputPassword1" placeholder="Nom de famille">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="nationality" type="nationality" class="form-control" id="exampleInputPassword1" placeholder="Nationalite">
+            </div>
+            <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+            <button (click)="affichage()" type="submit" class="btn btn-primary">S'inscrire</button>
+        </div>
+    </div> 
+</div>
+  

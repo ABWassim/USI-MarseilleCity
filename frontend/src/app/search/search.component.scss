@@ -58,3 +58,25 @@
         color: $violetbouton;
     }
 }
+
+.stretched-link::after {
+    position: relative;
+}
+.grid {
+    z-index: 0;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr; /* Create 2 columns and auto-place rows */
+    ng-container{
+        display: block;
+    }
+    a{
+        color: white;
+    }
+    img{
+        width: 320px;
+        height: 220px;
+    }
+}

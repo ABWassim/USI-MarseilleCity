@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light">
+<!-- <nav class="navbar navbar-light">
     <a class="navbar-brand" href="#">
         <img src="../../assets/Image1.png" width="30" height="30" class="d-inline-block align-top" alt="">
         WatchIt
@@ -12,5 +12,13 @@
         <a [routerLink]="['/userpage']"><i class="bi bi-person-fill"></i></a>
     </div>
     
-</nav>
-<app-video></app-video>
+</nav> -->
+<app-navbar></app-navbar>
+<div class="grid">
+    <ng-container *ngFor="let video of listeVideos">
+        <a [routerLink]="['/video', video.id + '-' + video.provider]" class="stretched-link">
+            <img src={{video.thumbnail}}>
+            <p>{{video.title}}</p>
+        </a>
+    </ng-container>
+</div>
