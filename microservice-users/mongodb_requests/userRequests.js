@@ -16,4 +16,13 @@ async function insertUser(db, doc) {
     });
 }
 
-module.exports = {getUser, insertUser}
+async function updateUser(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").updateOne(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
+module.exports = {getUser, insertUser, updateUser}
