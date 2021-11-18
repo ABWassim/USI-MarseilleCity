@@ -1,1 +1,16 @@
 <app-navbar></app-navbar>
+<h2>Mes playlists :</h2>
+<div class="grid">
+    <ng-container *ngFor="let playlist of playlists">
+        <a [routerLink]="['/playlist', playlist]" class="stretched-link">
+            <div class="card">
+                <img class="photo" src="../../assets/playlist_photo.jpg">
+                <p>{{playlist}}</p>
+                <div class="icone">
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-trash"></i>
+                </div>
+            </div>
+        </a>
+    </ng-container>
+</div>

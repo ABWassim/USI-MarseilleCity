@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { UserComponent } from './user/user.component';
 import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
     SearchComponent,
     InscriptionComponent,
     UserComponent,
-    PlaylistpageComponent
+    PlaylistpageComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
