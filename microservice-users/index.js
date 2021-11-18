@@ -13,7 +13,7 @@ app.use(cors({credentials: true, origin: true}));
 const uri = "mongodb+srv://root:twRRQWwuHUuEl3Ts@db-users.avxcs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 let db
- 
+
 MongoClient.connect(uri, function(err, client) {
   db = client.db("users");
 });
