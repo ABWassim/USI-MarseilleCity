@@ -1,1 +1,14 @@
-<p>playlist works!</p>
+<app-navbar></app-navbar>
+<h2>{{titleplaylist}}</h2>
+<div class="grid">
+    <ng-container *ngFor="let video of playlist">
+        <div class="card">
+            <img class="photo" src="{{video.urlVideo}}">
+            <p>{{video.title}}</p>
+            <div class="icone">
+                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-trash"></i>
+            </div>
+        </div>
+    </ng-container>
+</div>

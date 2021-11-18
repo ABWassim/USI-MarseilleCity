@@ -1,0 +1,80 @@
+@import "../../variable.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.stretched-link::after {
+    position: relative;
+}
+h2{
+    padding: 2rem;
+    color: white;
+}
+.grid {
+    z-index: 0;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr; /* Create 2 columns and auto-place rows */
+    ng-container{
+        display: block;
+    }
+    a{
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .card{
+        display: flex;
+        margin-left: 25% ;
+        width: 70%;
+        height: 300px;
+        background-color: $boutongris;
+        border-radius: 10px;
+        border: solid 2px $violetbouton;
+        transition: 0.3s;
+        img.photo{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            width: 320px;
+            height: auto;
+            border: solid 1px black;
+        }
+        .icone{
+            display: flex;
+            width: 100%;
+            height: 20%;
+            position: relative;
+        }
+        .bi{
+            position: absolute;
+            border: solid 1px black;
+            border-radius: 50%;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-right: 4px;
+            padding-left: 4px;
+            background-color: white;
+            font-size: 15px;
+        }
+        .bi-pencil-square{
+            right: 2.5rem;
+            bottom: 0.5rem;
+        }
+        .bi-pencil-square:hover{
+            background-color: $violetbouton;
+            color: white;
+        }
+        .bi-trash{
+            right: 0.5rem;
+            bottom: 0.5rem;
+        }
+        .bi-trash:hover{
+            background-color: $violetbouton;
+            color: white;
+        }
+    }
+    .card:hover{
+        background-color: #AEAEAE;
+    }
+    
+}
