@@ -33,6 +33,10 @@ async function updateAccount(req, res, db)
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
 
+    if (oldPassword !== '' && newPassword === ''){
+        return sendError(res, 'Old password specified but no new password specified.');
+    }
+
     const query = {
         _id : ObjectId(userId)
     }
