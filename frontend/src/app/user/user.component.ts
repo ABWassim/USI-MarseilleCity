@@ -9,13 +9,13 @@ import { MessageService } from '../message.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  password = '';
-  newpassword ='';
+  oldPassword  = '';
+  newPassword  ='';
   confnewpassword = '';
   errorMessage = "";
-  firstName = "";
-  lastName = "";
-  nationality = "";
+  newFirstName  = "";
+  newLastName  = "";
+  newNationality  = "";
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
@@ -23,16 +23,29 @@ export class UserComponent implements OnInit {
   }
 
   affichage(): void {
-    // this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
-    //   reponse => {
-    //     if(reponse.status == "ok"){
-    //       this.errorMessage='';
-    //       console.log("ok");
-    //     }
-    //     else{
-    //       this.errorMessage == "Un problème est survenu"
-    //     }
-    //   })
+    if (this.newPassword != this.confnewpassword){
+      this.errorMessage="les deux nouveaux mot de passe ne sont pas égaux";
+    }
+    else{
+      const data = {
+        newFirstName: this.newFirstName,
+        newLastName: this.newLastName,
+        newNationality: this.newNationality,
+        oldPassword: this.oldPassword,
+        newPassword: this.newPassword
+      };
+      this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
+        reponse => {
+          if(reponse.status == "ok"){
+            this.errorMessage="Informations enregistrer";
+            console.log('ok');
+          }
+          else{
+            this.errorMessage == "Un problème est survenu"
+          }
+        })
+    }
+    
   }
 
 }

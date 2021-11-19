@@ -2,7 +2,7 @@
 <h2>{{titleplaylist}} :</h2>
 <ng-container *ngFor="let video of playlist">
     <div class="card" >
-        <img class="photo" src="{{video.thumbnail}}">
+        <img class="photo" src={{video.thumbnail}}>
         <p>{{video.title}}</p>
         <div class="icone">
             <i class="bi bi-pencil-square"></i>

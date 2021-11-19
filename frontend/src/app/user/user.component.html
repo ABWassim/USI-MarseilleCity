@@ -3,13 +3,13 @@
     <div class="profil"> 
         <h2>Informations personnelles :</h2>
         <div class="form-group">
-            <input [(ngModel)]="firstName" class="form-control" placeholder="Prénom">
+            <input [(ngModel)]="newFirstName" class="form-control" placeholder="Prénom">
         </div>
         <div class="form-group">
-            <input [(ngModel)]="lastName" type="lastName" class="form-control" placeholder="Nom">
+            <input [(ngModel)]="newLastName" type="lastName" class="form-control" placeholder="Nom">
         </div>
         <div class="form-group">
-            <input [(ngModel)]="nationality" type="nationality" class="form-control"  placeholder="Nationalite">
+            <input [(ngModel)]="newNationality" type="nationality" class="form-control"  placeholder="Nationalite">
         </div>
         <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
         <button (click)="affichage()" type="submit" class="btn btn-primary">Enregistrer</button>
@@ -17,10 +17,10 @@
     <div class="modifmdp"> 
         <h2>Modification de mot de passe :</h2>
         <div class="form-group">
-            <input [(ngModel)]="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Ancien mot de passe" required>
+            <input [(ngModel)]="oldPassword" class="form-control" id="exampleInputPassword1" type="password" placeholder="Ancien mot de passe" required>
         </div>
         <div class="form-group">
-            <input [(ngModel)]="newpassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Nouveau mot de passe" required>
+            <input [(ngModel)]="newPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Nouveau mot de passe" required>
         </div>
         <div class="form-group">
             <input [(ngModel)]="confnewpassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmer mot de passe" required>

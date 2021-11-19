@@ -21,7 +21,7 @@ export class PlaylistComponent implements OnInit {
     };
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getVideosOfPlaylist', data).subscribe(
       reponse => {
-        this.playlist = reponse.data[0].videos;
+        this.playlist = reponse.data;
         console.log(this.playlist);
       })
   }
