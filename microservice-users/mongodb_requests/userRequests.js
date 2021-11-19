@@ -25,4 +25,13 @@ async function updateUser(db, query, update) {
     });
 }
 
-module.exports = {getUser, insertUser, updateUser}
+async function getInfos(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").find(doc).project({_id: 0}).toArray(function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+module.exports = {getUser, insertUser, updateUser, getInfos}
