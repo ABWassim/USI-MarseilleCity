@@ -25,7 +25,7 @@ async function getVideosOfPlaylist(req, res, db)
         return sendError(res, log);
     }
     else {
-        return sendMessage(res, log);
+        return sendMessage(res, log[0].videos);
     }
 }
 
