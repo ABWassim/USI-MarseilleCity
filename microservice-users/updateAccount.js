@@ -1,7 +1,8 @@
 const {sendMessage, sendError} = require('./message');
-const updateUser = require('./mongodb_requests/userRequests').updateUser
 const auth = require('./auth.js');
 const {ObjectId} = require('mongodb');
+const updateUser = require('./mongodb_requests/userRequests').updateUser
+const getInfos = require('./mongodb_requests/userRequests').getInfos
 
 async function updateAccount(req, res, db)
 {
@@ -20,13 +21,31 @@ async function updateAccount(req, res, db)
     if (!req.body.hasOwnProperty('newNationality'))
         return sendError(res, 'No new Nationality was provided');
 
+    if (!req.body.hasOwnProperty('oldPassword'))
+        return sendError(res, 'No old Password was provided');
+
     if (!req.body.hasOwnProperty('newPassword'))
         return sendError(res, 'No new Password was provided');
 
     const newFirstName = req.body.newFirstName;
     const newLastName = req.body.newLastName;
     const newNationality = req.body.newNationality;
+    const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
+
+    const query = {
+        _id : ObjectId(userId)
+    }
+
+    if (oldPassword !== ''){
+        const [code, log] = await getInfos(db, query);
+        if (code === 'error'){
+            return sendError(res, log);
+        }
+        if (log[0].password !== oldPassword){
+            return sendError(res, 'Old password != New password');
+        }
+    }
 
     let _update = {}
 
@@ -44,10 +63,6 @@ async function updateAccount(req, res, db)
     }
 
     const update = { $set: _update };
-
-    const query = {
-        _id : ObjectId(userId)
-    }
 
     const [code, log] = await updateUser(db, query, update);
     if (code === 'error'){
