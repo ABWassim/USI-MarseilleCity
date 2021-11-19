@@ -1,13 +1,7 @@
-.mat-dialog-content
-{
-  background-color: #242526;
+@import "../../variable.scss";
+.container{
+  padding: 1rem;
 }
-
-.mat-dialog-actions
-{
-  background-color: #242526;
-}
-
 h1
 {
   font-size: 18px;
@@ -16,21 +10,20 @@ h1
 
 .form-control
 {
-  background-color: #4b4b4e;
-  color: white;
-  border-color: #626266;
-  margin-top: 15px;
+  background-color: white;
+  color: $violetbouton;
+  margin-top: 10px;
   height : 35px;
+  margin-bottom: 1rem;
 }
 
-.form-control:focus
-{
-  box-shadow:0 0 0 3px #343437;
+.mat-dialog-actions{
+  justify-content: center;
+  align-items: center;
 }
-
 .mat-button
 {
-  background-color: #4b4b4e;
-  color: white;
+  background-color: $boutongris;
+  color: black;
 }
 

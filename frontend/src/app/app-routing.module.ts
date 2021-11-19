@@ -11,6 +11,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path : 'home', component : HomeComponent},
   {path : 'video/:id', component : ZoomvideoComponent},
   {path : 'search/:searchword', component :SearchComponent},

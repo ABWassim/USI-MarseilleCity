@@ -12,19 +12,34 @@ export class UserComponent implements OnInit {
   oldPassword  = '';
   newPassword  ='';
   confnewpassword = '';
-  errorMessage = "";
   newFirstName  = "";
   newLastName  = "";
   newNationality  = "";
+  errorMessagegauche = "";
+  checkMessagegauche = "";
+  errorMessagedroit = "";
+  checkMessagedroit = "";
+  firstName= "";
+  lastName= "";
+  nationality="";
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const data = {};
+    this.msgservice.sendMessage( environment.debutUrlUser + '/getUserInformations', data).subscribe(
+      reponse => {
+        if(reponse.status == "ok"){
+          console.log(reponse.data);
+          this.firstName= reponse.data.firstName;
+          this.lastName= reponse.data.lastName;
+          this.nationality= reponse.data.nationality;
+        }
+      });
   }
 
-  affichage(): void {
-    if (this.newPassword != this.confnewpassword){
-      this.errorMessage="les deux nouveaux mot de passe ne sont pas égaux";
+  affichagegauche(): void {
+    if (this.newPassword != ''){
     }
     else{
       const data = {
@@ -37,11 +52,40 @@ export class UserComponent implements OnInit {
       this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
         reponse => {
           if(reponse.status == "ok"){
-            this.errorMessage="Informations enregistrer";
+            this.errorMessagegauche='';
+            this.checkMessagegauche="Informations enregistrees";
             console.log('ok');
           }
           else{
-            this.errorMessage == "Un problème est survenu"
+            this.errorMessagegauche = "Un problème est survenu"
+            this.checkMessagegauche='';
+          }
+        })
+    }
+    
+  }
+
+  affichagedroit(): void {
+    if (this.newPassword != this.confnewpassword){
+      this.errorMessagedroit="les deux nouveaux mot de passe ne sont pas égaux";
+    }
+    else{
+      const data = {
+        newFirstName: this.newFirstName,
+        newLastName: this.newLastName,
+        newNationality: this.newNationality,
+        oldPassword: this.oldPassword,
+        newPassword: this.newPassword
+      };
+      this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
+        reponse => {
+          if(reponse.status == "ok"){
+            this.errorMessagedroit='';
+            this.checkMessagedroit="Informations enregistrees";
+          }
+          else{
+            this.errorMessagedroit = "Un problème est survenu"
+            this.checkMessagedroit ='';
           }
         })
     }

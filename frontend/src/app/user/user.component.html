@@ -3,16 +3,17 @@
     <div class="profil"> 
         <h2>Informations personnelles :</h2>
         <div class="form-group">
-            <input [(ngModel)]="newFirstName" class="form-control" placeholder="Prénom">
+            <input [(ngModel)]="newFirstName" class="form-control" placeholder={{firstName}}>
         </div>
         <div class="form-group">
-            <input [(ngModel)]="newLastName" type="lastName" class="form-control" placeholder="Nom">
+            <input [(ngModel)]="newLastName" type="lastName" class="form-control" placeholder={{lastName}}>
         </div>
         <div class="form-group">
-            <input [(ngModel)]="newNationality" type="nationality" class="form-control"  placeholder="Nationalite">
+            <input [(ngModel)]="newNationality" type="nationality" class="form-control"  placeholder={{nationality}}>
         </div>
-        <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
-        <button (click)="affichage()" type="submit" class="btn btn-primary">Enregistrer</button>
+        <div style = "margin-top: 10px;" *ngIf="errorMessagegauche.length!=0" class="alert alert-danger" role="alert">{{errorMessagegauche}}</div>
+        <div style = "margin-top: 10px;" *ngIf="checkMessagegauche.length!=0" class="alert alert-success" role="alert">{{checkMessagegauche}}</div>
+        <button (click)="affichagegauche()" type="submit" class="btn btn-primary">Enregistrer</button>
     </div> 
     <div class="modifmdp"> 
         <h2>Modification de mot de passe :</h2>
@@ -25,7 +26,8 @@
         <div class="form-group">
             <input [(ngModel)]="confnewpassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmer mot de passe" required>
         </div>
-        <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
-        <button (click)="affichage()" type="submit" class="btn btn-primary">Enregistrer</button>
+        <div style = "margin-top: 10px;" *ngIf="errorMessagedroit.length!=0" class="alert alert-danger" role="alert">{{errorMessagedroit}}</div>
+        <div style = "margin-top: 10px;" *ngIf="checkMessagedroit.length!=0" class="alert alert-success" role="alert">{{checkMessagedroit}}</div>
+        <button (click)="affichagedroit()" type="submit" class="btn btn-primary">Enregistrer</button>
     </div>
 </div>
