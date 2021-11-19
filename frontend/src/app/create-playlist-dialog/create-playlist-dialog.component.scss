@@ -1,0 +1,36 @@
+.mat-dialog-content
+{
+  background-color: #242526;
+}
+
+.mat-dialog-actions
+{
+  background-color: #242526;
+}
+
+h1
+{
+  font-size: 18px;
+  color: white;
+}
+
+.form-control
+{
+  background-color: #4b4b4e;
+  color: white;
+  border-color: #626266;
+  margin-top: 15px;
+  height : 35px;
+}
+
+.form-control:focus
+{
+  box-shadow:0 0 0 3px #343437;
+}
+
+.mat-button
+{
+  background-color: #4b4b4e;
+  color: white;
+}
+

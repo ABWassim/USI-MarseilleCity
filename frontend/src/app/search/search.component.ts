@@ -14,8 +14,8 @@ export class SearchComponent implements OnInit {
   listeVideos: Video[] = [];
   
   constructor(private msgservice: MessageService, private route: ActivatedRoute,private router: Router) { }
-  // searchword: string= "";
-  // url: string="";
+  searchword: string= "";
+  url: string="";
 
   ngOnInit(): void {
     const data = {
@@ -28,9 +28,18 @@ export class SearchComponent implements OnInit {
       }
     );
   }
-  // affichage():void{
-  //   this.url = "/search/" + this.searchword;
-  //   this.router.navigateByUrl(this.url);
-  // }
+  affichage():void{
+    this.url = "/search/" + this.searchword;
+    this.router.navigateByUrl(this.url);
+    const data = {
+      query: this.searchword
+    };
+    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
+      reponse => {
+        this.listeVideos = reponse.data;
+        console.log(this.listeVideos);
+      }
+    );
+  }
 
 }

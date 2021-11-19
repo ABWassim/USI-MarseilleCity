@@ -1,5 +1,9 @@
 <app-navbar></app-navbar>
-<h2>Mes playlists :</h2>
+<div class="haut">
+    <h2>Mes playlists :</h2>
+    <app-create-playlist (newItemEvent)="onCreatePlaylist($event)"></app-create-playlist>
+</div>
+
 <div class="grid">
     <ng-container *ngFor="let playlist of playlists">
         <a [routerLink]="['/playlist', playlist]" class="stretched-link">

@@ -22,5 +22,10 @@ export class PlaylistpageComponent implements OnInit {
       }
     );
   }
+  
+  onCreatePlaylist(newPlaylist: any): void {
+    const name =newPlaylist;
+    this.playlists.unshift(name);
+  }
 
 }

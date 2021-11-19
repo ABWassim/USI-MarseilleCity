@@ -5,8 +5,18 @@
 }
 
 h2{
+    font-size: 30px;
     padding: 2rem;
     color: white;
+}
+.haut{
+    display: flex;
+    position: relative;
+}
+app-create-playlist{
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
 }
 .grid {
     z-index: 0;
@@ -19,6 +29,7 @@ h2{
         display: block;
     }
     a{
+        margin-bottom: 2rem;
         color: black;
     }
     a:hover{

@@ -13,7 +13,7 @@ export class PlaylistComponent implements OnInit {
   titleplaylist = this.route.snapshot.paramMap.get('playlist');
   playlist : any[]=[];
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute,) { }
+  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const data = {
@@ -22,7 +22,7 @@ export class PlaylistComponent implements OnInit {
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getVideosOfPlaylist', data).subscribe(
       reponse => {
         this.playlist = reponse.data[0].videos;
-        console.log(this.playlist[1]);
+        console.log(this.playlist);
       })
   }
 

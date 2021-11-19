@@ -16,6 +16,11 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { UserComponent } from './user/user.component';
 import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
+import { CreatePlaylistDialogComponent } from './create-playlist-dialog/create-playlist-dialog.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,14 +34,19 @@ import { PlaylistComponent } from './playlist/playlist.component';
     InscriptionComponent,
     UserComponent,
     PlaylistpageComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    CreatePlaylistComponent,
+    CreatePlaylistDialogComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
