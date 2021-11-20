@@ -21,10 +21,16 @@ MongoClient.connect(uri, function(err, client) {
 const getPlaylists = require ('./getPlaylists');
 const getVideosOfPlaylist = require('./getVideosOfPlaylist');
 const addPlaylist = require('./addPlaylist');
+const deletePlaylist = require('./deletePlaylist');
+const addVideo = require('./addVideo');
+const deleteVideo = require('./deleteVideo');
 
 app.post('/getPlaylists', (req, res) => {getPlaylists(req, res, db);});
 app.post('/getVideosOfPlaylist', (req, res) => {getVideosOfPlaylist(req, res, db);});
 app.post('/addPlaylist', (req, res) => {addPlaylist(req, res, db);});
+app.post('/deletePlaylist', (req, res) => {deletePlaylist(req, res, db);});
+app.post('/addVideo', (req, res) => {addVideo(req, res, db);});
+app.post('/deleteVideo', (req, res) => {deleteVideo(req, res, db);});
 
 
 app.listen(port, () => {console.log ('playlists listening on port 3002')});

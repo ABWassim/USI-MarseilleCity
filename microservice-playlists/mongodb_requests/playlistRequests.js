@@ -34,4 +34,32 @@ async function getPlaylistNameById(db, doc) {
     });
 }
 
-module.exports = {playlists, videosFromPlaylist, newPlaylist, getPlaylistNameById}
+async function dlPlaylist(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("playlists").deleteOne(doc, function(err, obj) {
+            if (err) reject(['error', err]);
+            resolve(['ok', obj]);
+        });
+    });
+}
+
+async function pushVideo(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("playlists").updateOne(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
+async function rmVideo(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("playlists").update(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
+
+module.exports = {playlists, videosFromPlaylist, newPlaylist, getPlaylistNameById, dlPlaylist, pushVideo, rmVideo}
