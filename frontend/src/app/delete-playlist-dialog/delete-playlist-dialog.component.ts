@@ -21,8 +21,6 @@ export class DeletePlaylistDialogComponent {
   }
 
   onClick(): void {
-    console.log(this.playlistName);
-
     const data = {
       name: this.playlistName,
     };
