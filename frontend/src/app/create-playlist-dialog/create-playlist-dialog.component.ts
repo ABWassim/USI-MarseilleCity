@@ -17,30 +17,28 @@ export class CreatePlaylistDialogComponent {
     @Inject(MessageService) private messageService: MessageService) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('');
   }
 
   onClick(): void {
-    const data = {
-      name: this.nom_nouvelle_playlist,
-    };
-    console.log(this.nom_nouvelle_playlist);
-    this.messageService.sendMessage( environment.debutUrlPlaylist + '/addPlaylist', data).subscribe(
-      retour => {
-        if (retour.status == 'ok'){
-          this.errorMessage = '';
-          this.dialogRef.close(retour.data);
-        }
-        else {
-          if (this.nom_nouvelle_playlist === ''){
-            this.errorMessage = 'Le nom de la nouvelle playlist est vide';
+    if (this.nom_nouvelle_playlist === ''){
+      this.errorMessage = 'Le nom de la nouvelle playlist est vide';
+    }
+    else {
+      const data = {
+        name: this.nom_nouvelle_playlist,
+      };
+      this.messageService.sendMessage( environment.debutUrlPlaylist + '/addPlaylist', data).subscribe(
+        retour => {
+          if (retour.status === 'ok'){
+            this.errorMessage = '';
+            this.dialogRef.close(this.nom_nouvelle_playlist);
           }
           else {
             this.errorMessage = 'La playlist existe déjà';
           }
         }
-      }
-    );
+      );
+    }
   }
-
 }
