@@ -19,7 +19,7 @@ async function deleteVideo(req, res, db)
         return sendError(res, 'No video Id was provided');
 
     const _name = req.body.name;
-    const _videoId = req.body.video;
+    const _videoId = req.body.videoId;
 
     const [code1, existingPlaylist] = await playlist(db,
         {_userId: ObjectId(userId)}
@@ -46,6 +46,9 @@ async function deleteVideo(req, res, db)
     const update = {
         $pull: {videos: {id: _videoId}}
     }
+
+    console.log(query);
+    console.log(update);
 
     const [code2, ack] = await rmVideo(db, query, update);
     if (code2 === 'error'){
