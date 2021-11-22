@@ -1,0 +1,24 @@
+@import "../../variable.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.bi{
+  position: absolute;
+  border: solid 1px black;
+  border-radius: 50%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+  padding-left: 4px;
+  background-color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.bi-trash{
+  right: 0.5rem;
+  bottom: 0.5rem;
+}
+.bi-trash:hover{
+  background-color: $violetbouton;
+  color: white;
+}
