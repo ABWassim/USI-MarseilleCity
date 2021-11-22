@@ -54,10 +54,15 @@ async function pushVideo(db, query, update) {
 
 async function rmVideo(db, query, update) {
     return new Promise((resolve, reject) => {
-        db.collection("playlists").update(query, update ,function(err, res) {
-            if (err) reject(['error', err]);
-            resolve(['ok', res]);
-        });
+        try {
+            db.collection("playlists").updateOne(query, update, function(err, res) {
+                if (err) reject(['error', err]);
+                resolve(['ok', res]);
+            });
+        }
+        catch (e) {
+            console.log(e)
+        }
     });
 }
 
