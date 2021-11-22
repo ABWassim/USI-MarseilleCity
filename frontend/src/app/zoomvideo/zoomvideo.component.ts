@@ -19,6 +19,7 @@ export class ZoomvideoComponent implements OnInit {
   idVideo = this.splitted[0];
   provide = this.splitted[1];
   url: SafeResourceUrl;
+  playlists: string[] = [];
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
 
@@ -40,12 +41,30 @@ export class ZoomvideoComponent implements OnInit {
       }
     );
     this.url=this.getSafeURL();
+
+    const data2 = {};
+    this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getPlaylists', data2).subscribe(
+      reponse => {
+        this.playlists = reponse.data;
+      }
+    );
   }
 
   getSafeURL(): SafeResourceUrl{
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.newUrlVideo);
   }
-  
+
+  addVideo(playlist: string):void{
+    const data = {
+      name: playlist,
+      video: this.videozoom
+    };
+    this.msgservice.sendMessage( environment.debutUrlPlaylist + '/addVideo', data).subscribe(
+      reponse => {
+          console.log(reponse);
+      }
+    );
+  }
 }
 
 

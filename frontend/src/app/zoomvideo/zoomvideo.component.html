@@ -2,10 +2,12 @@
 <div class="zoom_video">
     <iframe title="YouTube" width="950" height="500" [src]="getSafeURL()" frameborder="0" allowfullscreen></iframe>
     <div class="bloc_right">
-        <button type="button" class="btn">Ajouter</button>
+        <div class="dropdown">
+            <button class="dropbtn btn my-2 my-sm-0" type="submit">Ajouter</button>
+            <div class="dropdown-content">
+              <a *ngFor="let playlist of playlists" (click)="addVideo(playlist)">{{playlist}}</a>
+            </div>
+          </div> 
         <h2>{{videozoom.title}}</h2>
     </div>
 </div>
-<!-- <app-video></app-video> -->
-
-

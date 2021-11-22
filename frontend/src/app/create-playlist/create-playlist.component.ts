@@ -14,6 +14,7 @@ export interface NewPlaylist {
 export class CreatePlaylistComponent{
   @Output() newItemEvent = new EventEmitter<any>();
   constructor(public dialog: MatDialog) {}
+  video_id: string;
 
   buttonClick(): void {
     const dialogRef = this.dialog.open(CreatePlaylistDialogComponent, {
