@@ -23,6 +23,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DeletePlaylistComponent } from './delete-playlist/delete-playlist.component';
 import { DeletePlaylistDialogComponent } from './delete-playlist-dialog/delete-playlist-dialog.component';
+import { DeleteVideoComponent } from './delete-video/delete-video.component';
+import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { DeletePlaylistDialogComponent } from './delete-playlist-dialog/delete-p
     CreatePlaylistComponent,
     CreatePlaylistDialogComponent,
     DeletePlaylistComponent,
-    DeletePlaylistDialogComponent
+    DeletePlaylistDialogComponent,
+    DeleteVideoComponent,
+    DeleteVideoDialogComponent
   ],
   imports: [
     BrowserModule,

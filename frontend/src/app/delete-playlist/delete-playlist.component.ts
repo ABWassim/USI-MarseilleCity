@@ -27,8 +27,6 @@ export class DeletePlaylistComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.newItemEvent.emit(result);
     });
-
-    dialogRef.afterClosed().subscribe(result => {});
   }
 
 }

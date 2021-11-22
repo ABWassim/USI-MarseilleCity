@@ -28,16 +28,13 @@ a{
         width: 320px;
         height: auto;
         border: solid 1px black;
-    }
-    h3{
-        position: absolute;
-        left: 400px;
-        bottom: 40%;
+        cursor: pointer;
     }
     p{
-        position: absolute;
-        left: 400px;
-        bottom: 1rem;
+      position: absolute;
+      left: 400px;
+      bottom: 30%;
+      font-size: 20px;
     }
     .icone{
         display: flex;
