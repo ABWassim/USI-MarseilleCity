@@ -25,18 +25,38 @@ export class LoginComponent implements OnInit {
   }
 
   affichage(): void {
-    this.authservice.sendAuthentication(this.email, this.password).subscribe(
-      reponse => {
-        this.authservice.finalizeAuthentication(reponse);
-        if (this.authservice.isAuthenticated){
-          this.errorMessage = '';
-          this.router.navigateByUrl('/home');
+    if (this.checkInputs()){
+      this.authservice.sendAuthentication(this.email, this.password).subscribe(
+        reponse => {
+          this.authservice.finalizeAuthentication(reponse);
+          if (this.authservice.isAuthenticated){
+            this.errorMessage = '';
+            this.router.navigateByUrl('/home');
+          }
+          else {
+            if (reponse.data.reason === 'Wrong mail/password combination'){
+              this.errorMessage = "Le nom d'utilisateur ou le mot de passe est incorrect";
+            }
+            else if (reponse.data.reason === 'Account suspended'){
+              this.errorMessage = "Votre compte a été suspendu";
+            }
+            else {
+              this.errorMessage = "L'authentification n'a pas pu aboutir, veuillez ressayer plus tard";
+            }
+          }
         }
-        else {
-          this.errorMessage = "Le nom d'utilisateur ou le mot de passe est incorrect";
-        }
-      }
-    );
+      );
+    }
+  }
+
+  checkInputs(): boolean {
+    const reg = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    console.log(this.email);
+    if (!reg.test(this.email)){
+      this.errorMessage = "Le format de l'adresse mail est invalide";
+      return false;
+    }
+    return true;
   }
 
 }

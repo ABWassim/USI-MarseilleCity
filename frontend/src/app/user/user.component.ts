@@ -9,19 +9,19 @@ import { MessageService } from '../message.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  oldPassword  = '';
-  newPassword  ='';
-  confnewpassword = '';
-  newFirstName  = "";
-  newLastName  = "";
-  newNationality  = "";
-  errorMessagegauche = "";
-  checkMessagegauche = "";
-  errorMessagedroit = "";
-  checkMessagedroit = "";
-  firstName= "";
-  lastName= "";
-  nationality="";
+  firstName = '';
+  lastName = '';
+  nationality = '';
+  newFirstName = '';
+  newLastName = '';
+  newNationality = '';
+  oldPassword = '';
+  newPassword = '';
+  confNewPassword = '';
+  errorMessagegauche = '';
+  checkMessagegauche = '';
+  errorMessagedroit = '';
+  checkMessagedroit = '';
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
@@ -29,67 +29,77 @@ export class UserComponent implements OnInit {
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlUser + '/getUserInformations', data).subscribe(
       reponse => {
-        if(reponse.status == "ok"){
-          console.log(reponse.data);
-          this.firstName= reponse.data.firstName;
-          this.lastName= reponse.data.lastName;
-          this.nationality= reponse.data.nationality;
+        if (reponse.status === 'ok'){
+          this.firstName = reponse.data.firstName;
+          this.lastName = reponse.data.lastName;
+          this.nationality = reponse.data.nationality;
         }
       });
   }
 
-  affichagegauche(): void {
-    if (this.newPassword != ''){
+  modifierInfosPersos(): void {
+    if (this.newFirstName === '' && this.newLastName === '' && this.newNationality === ''){
+      this.errorMessagegauche = 'Veuillez spécifier au moins un champ';
+      return;
     }
-    else{
-      const data = {
+    const data = {
         newFirstName: this.newFirstName,
         newLastName: this.newLastName,
         newNationality: this.newNationality,
-        oldPassword: this.oldPassword,
-        newPassword: this.newPassword
+        oldPassword: '',
+        newPassword: ''
       };
-      this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
-        reponse => {
-          if(reponse.status == "ok"){
-            this.errorMessagegauche='';
-            this.checkMessagegauche="Informations enregistrees";
-            console.log('ok');
-          }
-          else{
-            this.errorMessagegauche = "Un problème est survenu"
-            this.checkMessagegauche='';
-          }
-        })
-    }
-    
+    this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
+      reponse => {
+        if (reponse.status === 'ok'){
+          this.errorMessagegauche = '';
+          this.checkMessagegauche = 'Informations enregistrées';
+        }
+        else {
+          this.errorMessagegauche = 'Un problème est survenu, veuillez ressayer plus tard';
+          this.checkMessagegauche = '';
+        }
+      });
   }
 
-  affichagedroit(): void {
-    if (this.newPassword != this.confnewpassword){
-      this.errorMessagedroit="les deux nouveaux mot de passe ne sont pas égaux";
+  modifierMDP(): void {
+    if (this.oldPassword !== '' && this.newPassword === ''){
+      this.errorMessagedroit = 'Veuillez spécifier votre ancien mot de passe';
+      return;
     }
-    else{
-      const data = {
-        newFirstName: this.newFirstName,
-        newLastName: this.newLastName,
-        newNationality: this.newNationality,
-        oldPassword: this.oldPassword,
-        newPassword: this.newPassword
-      };
-      this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
-        reponse => {
-          if(reponse.status == "ok"){
-            this.errorMessagedroit='';
-            this.checkMessagedroit="Informations enregistrees";
-          }
-          else{
-            this.errorMessagedroit = "Un problème est survenu"
-            this.checkMessagedroit ='';
-          }
-        })
+    if (this.newPassword !== this.confNewPassword){
+      this.errorMessagedroit = 'Le nouveau mot de passe et sa confirmation sont différents';
+      return;
     }
-    
-  }
+    if (this.newPassword.length < 8){
+      this.errorMessagedroit = 'Le nouveau mot de passe doit contenir au moins 8 caractères';
+      return;
+    }
 
+    const data = {
+      newFirstName: '',
+      newLastName: '',
+      newNationality: '',
+      oldPassword: this.oldPassword,
+      newPassword: this.newPassword
+    };
+    this.msgservice.sendMessage( environment.debutUrlUser + '/updateAccount', data).subscribe(
+      reponse => {
+        if (reponse.status === 'ok'){
+          this.errorMessagedroit = '' ;
+          this.checkMessagedroit = 'Le mot de passe a bien été modifié';
+        }
+        else {
+          if (reponse.data.reason === 'Old password incorrect'){
+            this.errorMessagedroit = "L'ancien mot de passe est incorrect";
+            this.checkMessagedroit = '';
+          }
+          else {
+            this.errorMessagedroit = "Un problème est survenu, veuillez ressayer plus tard";
+            this.checkMessagedroit = '';
+          }
+        }
+      });
+  }
 }
+
