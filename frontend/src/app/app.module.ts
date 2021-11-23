@@ -22,7 +22,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { EditPlaylistDialogComponent } from './edit-playlist-dialog/edit-playlist-dialog.component';
-
+import { DeletePlaylistComponent } from './delete-playlist/delete-playlist.component';
+import { DeletePlaylistDialogComponent } from './delete-playlist-dialog/delete-playlist-dialog.component';
+import { DeleteVideoComponent } from './delete-video/delete-video.component';
+import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,11 @@ import { EditPlaylistDialogComponent } from './edit-playlist-dialog/edit-playlis
     PlaylistComponent,
     CreatePlaylistComponent,
     CreatePlaylistDialogComponent,
-    EditPlaylistDialogComponent
+    EditPlaylistDialogComponent,
+    DeletePlaylistComponent,
+    DeletePlaylistDialogComponent,
+    DeleteVideoComponent,
+    DeleteVideoDialogComponent
   ],
   imports: [
     BrowserModule,

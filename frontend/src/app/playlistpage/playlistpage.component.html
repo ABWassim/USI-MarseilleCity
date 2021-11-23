@@ -6,13 +6,13 @@
 
 <div class="grid">
     <ng-container *ngFor="let playlist of playlists">
-        <a [routerLink]="['/playlist', playlist]" class="stretched-link">
+        <a class="stretched-link">
             <div class="card">
-                <img class="photo" src="../../assets/playlist_photo.jpg">
+                <img [routerLink]="['/playlist', playlist]" class="photo" src="../../assets/playlist_photo.jpg">
                 <p>{{playlist}}</p>
                 <div class="icone">
                     <i (click)="OpenDialog(playlist)"class="bi bi-pencil-square"></i>
-                    <i class="bi bi-trash"></i>
+                    <app-delete-playlist (newItemEvent)="onDeletePlaylist($event)" [playlistName] = playlist></app-delete-playlist>
                 </div>
             </div>
         </a>

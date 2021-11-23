@@ -22,8 +22,28 @@ export class PlaylistComponent implements OnInit {
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getVideosOfPlaylist', data).subscribe(
       reponse => {
         this.playlist = reponse.data;
-        console.log(this.playlist);
-      })
+        for (let i = 0 ; i < this.playlist.length ; i++){
+          this.playlist[i].date = (this.playlist[i].date.split('T'))[0];
+          const times = this.playlist[i].date.split('-');
+          this.playlist[i].date = times[2] + '-' + times[1] + '-' + times[0];
+        }
+      });
+  }
+
+  onDeleteVideo(deleteVideoId: any): void {
+    let index = -1;
+    let found = false;
+    if (deleteVideoId !== ''){
+      for (let i = 0 ; i < this.playlist.length && !found; i++){
+        if (this.playlist[i].id === deleteVideoId){
+          index = i;
+          found = true;
+        }
+      }
+      if (index !== -1) {
+        this.playlist.splice(index, 1);
+      }
+    }
   }
 
 }

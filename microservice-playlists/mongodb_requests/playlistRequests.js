@@ -25,6 +25,20 @@ async function newPlaylist(db, doc) {
     });
 }
 
+async function rnPlaylist(db, query, update) {
+    return new Promise((resolve, reject) => {
+        try {
+            db.collection("playlists").updateOne(query, update, function(err, res) {
+                if (err) reject(['error', err]);
+                resolve(['ok', res]);
+            });
+        }
+        catch (e) {
+            console.log(e)
+        }
+    });
+}
+
 async function getPlaylistNameById(db, doc) {
     return new Promise((resolve, reject) => {
         db.collection("playlists").find(doc).project({name: 1, _id: 0}).toArray(function(err, result) {
@@ -66,5 +80,4 @@ async function rmVideo(db, query, update) {
     });
 }
 
-
-module.exports = {playlists, videosFromPlaylist, newPlaylist, getPlaylistNameById, dlPlaylist, pushVideo, rmVideo}
+module.exports = {playlists, videosFromPlaylist, newPlaylist, getPlaylistNameById, dlPlaylist, pushVideo, rmVideo, rnPlaylist}
