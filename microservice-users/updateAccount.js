@@ -3,6 +3,7 @@ const auth = require('./auth.js');
 const {ObjectId} = require('mongodb');
 const updateUser = require('./mongodb_requests/userRequests').updateUser
 const getInfos = require('./mongodb_requests/userRequests').getInfos
+const sha256 = require('sha256')
 
 async function updateAccount(req, res, db)
 {
@@ -33,10 +34,6 @@ async function updateAccount(req, res, db)
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
 
-    if (oldPassword !== '' && newPassword === ''){
-        return sendError(res, 'Old password specified but no new password specified.');
-    }
-
     const query = {
         _id : ObjectId(userId)
     }
@@ -46,8 +43,8 @@ async function updateAccount(req, res, db)
         if (code === 'error'){
             return sendError(res, log);
         }
-        if (log[0].password !== oldPassword){
-            return sendError(res, 'Old password != New password');
+        if (log[0].password !== sha256(oldPassword)){
+            return sendError(res, 'Old password incorrect');
         }
     }
 
@@ -63,7 +60,7 @@ async function updateAccount(req, res, db)
         _update.nationality = newNationality;
     }
     if (newPassword !== ''){
-        _update.password = newPassword;
+        _update.password = sha256(newPassword);
     }
 
     const update = { $set: _update };
