@@ -2,6 +2,7 @@ const {sendMessage, sendError} = require('./message');
 const getUser = require('./mongodb_requests/userRequests').getUser
 const insertUser = require('./mongodb_requests/userRequests').insertUser
 const auth = require('./auth.js');
+const sha256 = require('sha256')
 
 async function createAccount(req, res, db)
 {
@@ -30,7 +31,7 @@ async function createAccount(req, res, db)
 
     const doc = {
         email : req.body.email,
-        password: req.body.password,
+        password: sha256(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         nationality: req.body.nationality,

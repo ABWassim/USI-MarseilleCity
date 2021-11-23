@@ -12,10 +12,10 @@ import { MessageService } from '../message.service';
 export class InscriptionComponent implements OnInit {
   email = '';
   password = '';
-  errorMessage = "";
-  firstName = "";
-  lastName = "";
-  nationality = "";
+  errorMessage = '';
+  firstName = '';
+  lastName = '';
+  nationality = '';
 
   constructor(private authservice: AuthService, private router: Router, private msgservice: MessageService) { }
 
@@ -23,23 +23,44 @@ export class InscriptionComponent implements OnInit {
   }
 
   affichage(): void {
-    const data = {
-      email: this.email,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      nationality: this.nationality
-    };
-    this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
-      reponse => {
-        if (reponse.status == 'ok'){
-          this.errorMessage = '';
-          this.router.navigateByUrl('/home');
-        }
-        else {
-          this.errorMessage = "L'inscription n'a pas aboutie";
-          console.log(reponse.data);
-        }
-      });
+    if (this.checkInputs()){
+      const data = {
+        email: this.email,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        nationality: this.nationality
+      };
+      this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
+        reponse => {
+          if (reponse.status === 'ok'){
+            this.errorMessage = '';
+            this.router.navigateByUrl('/home');
+          }
+          else {
+            if (reponse.data.reason === 'Email already used'){
+              this.errorMessage = "Cette adresse email est déjà associée à un compte";
+            }
+            else {
+              this.errorMessage = "L'inscription n'a pas pû aboutir, veuillez ressayer plus tard";
+            }
+          }
+        });
+    }
   }
+
+  checkInputs(): boolean {
+    const reg = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    console.log(this.email);
+    if (!reg.test(this.email)){
+      this.errorMessage = "Le format de l'adresse mail est invalide";
+      return false;
+    }
+    if (this.password.length < 8){
+      this.errorMessage = "Le mot de passe doit contenir au minimum 8 caractères";
+      return false;
+    }
+    return true;
+  }
+
 }

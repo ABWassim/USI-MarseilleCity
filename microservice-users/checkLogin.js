@@ -1,6 +1,7 @@
 const {sendMessage, sendError} = require('./message');
 const getUser = require('./mongodb_requests/userRequests').getUser
 const auth = require('./auth.js');
+const sha256 = require('sha256')
 
 async function checkLogin(req, res, db)
 {
@@ -12,11 +13,10 @@ async function checkLogin(req, res, db)
 
     const doc = {
         email: req.body.email,
-        password: req.body.password
+        password: sha256(req.body.password)
     };
 
     const [code, log] = await getUser(db, doc);
-
 
     if (code === 'error'){
         return sendError(res, log);

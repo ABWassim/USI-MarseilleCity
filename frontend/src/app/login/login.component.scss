@@ -11,8 +11,13 @@
 }
 
 div.logo{
+<<<<<<< HEAD
     width: 60%;
     
+=======
+    width: 50%;
+
+>>>>>>> main
     img{
         width: 70px;
         height: auto;
@@ -68,5 +73,5 @@ div.logo{
     }
     input::placeholder {
         color: $violetbouton;
-    }      
+    }
 }
