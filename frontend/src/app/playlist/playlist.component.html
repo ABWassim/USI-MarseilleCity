@@ -4,17 +4,14 @@
     <a>
         <div class="card" >
             <img [routerLink]="['/video', video.id + '-' + video.provider]" class="photo" src={{video.thumbnail}}>
-            <p>
-              {{video.title}} <br><br>
-              <i class="bi bi-person-fill"></i> {{video.channel}} <br><br>
-              <i class="bi bi-calendar"></i> Postée le {{video.date}} <br><br>
-            </p>
             <div class="icone">
                 <app-delete-video (newItemEvent)="onDeleteVideo($event)" [videoId]=video.id [videoTitle] = video.title [playlistName]="titleplaylist"></app-delete-video>
+            </div>
+            <div class="infoVideo">
+              <p class="title">{{video.title}}</p>
+              <div class="channel"><i class="bi bi-person-fill"></i> <p>{{video.channel}} </p></div>
+              <div class="date"><i class="bi bi-calendar"></i> <p>Postée le {{video.date}}</p></div>
             </div>
         </div>
     </a>
 </ng-container>
-
-
-
