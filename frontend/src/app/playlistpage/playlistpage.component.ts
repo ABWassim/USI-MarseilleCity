@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { EditPlaylistDialogComponent } from '../edit-playlist-dialog/edit-playlist-dialog.component';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -10,8 +12,11 @@ import { MessageService } from '../message.service';
 })
 export class PlaylistpageComponent implements OnInit {
   playlists: string[] = [];
+  @Output() newItemEvent = new EventEmitter<any>();
+  new_name_playlist: string;
   
-  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
+  
+  constructor(private msgservice: MessageService, private route: ActivatedRoute,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     const data = {};
@@ -26,6 +31,17 @@ export class PlaylistpageComponent implements OnInit {
   onCreatePlaylist(newPlaylist: any): void {
     const name =newPlaylist;
     this.playlists.unshift(name);
+  }
+
+  OpenDialog(playlist): void{
+    const dialogRef = this.dialog.open(EditPlaylistDialogComponent, {
+      data: {
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.newItemEvent.emit(result);
+    });
   }
 
 }

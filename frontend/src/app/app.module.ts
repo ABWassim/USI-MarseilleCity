@@ -21,6 +21,8 @@ import { CreatePlaylistDialogComponent } from './create-playlist-dialog/create-p
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { EditPlaylistDialogComponent } from './edit-playlist-dialog/edit-playlist-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PlaylistpageComponent,
     PlaylistComponent,
     CreatePlaylistComponent,
-    CreatePlaylistDialogComponent
+    CreatePlaylistDialogComponent,
+    EditPlaylistDialogComponent
   ],
   imports: [
     BrowserModule,
