@@ -10,6 +10,7 @@ import { MessageService } from '../message.service';
 })
 export class EditPlaylistDialogComponent {
   nom_nouvelle_playlist:string;
+  old_name= this.data.playlistName;
   errorMessage: string;
 
   constructor(public dialogRef: MatDialogRef<EditPlaylistDialogComponent>,
@@ -22,10 +23,10 @@ export class EditPlaylistDialogComponent {
 
   onClick(): void {
     const data = {
-      name: this.nom_nouvelle_playlist,
+      nameOld: this.old_name,
+      nameNew: this.nom_nouvelle_playlist
     };
-    console.log(this.nom_nouvelle_playlist);
-    this.messageService.sendMessage( environment.debutUrlPlaylist + '/addPlaylist', data).subscribe(
+    this.messageService.sendMessage( environment.debutUrlPlaylist + '/renamePlaylist', data).subscribe(
       retour => {
         if (retour.status == 'ok'){
           this.errorMessage = '';

@@ -44,15 +44,13 @@ export class PlaylistpageComponent implements OnInit {
     }
   }
 
-  OpenDialog(playlist): void{
-    const dialogRef = this.dialog.open(EditPlaylistDialogComponent, {
-      data: {
+  onEditPlaylist(newPlaylist: any, oldPlaylist: any): void {
+    if (oldPlaylist !== ''){
+      const index: number = this.playlists.indexOf(oldPlaylist);
+      if (index !== -1) {
+        this.playlists.splice(index, 1, newPlaylist);
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.newItemEvent.emit(result);
-    });
+    }
   }
 
 }

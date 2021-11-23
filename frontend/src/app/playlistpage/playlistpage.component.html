@@ -11,7 +11,7 @@
                 <img [routerLink]="['/playlist', playlist]" class="photo" src="../../assets/playlist_photo.jpg">
                 <p>{{playlist}}</p>
                 <div class="icone">
-                    <i (click)="OpenDialog(playlist)"class="bi bi-pencil-square"></i>
+                    <app-edit-playlist (newItemEvent)="onEditPlaylist($event, playlist)" [playlistName] = playlist></app-edit-playlist>
                     <app-delete-playlist (newItemEvent)="onDeletePlaylist($event)" [playlistName] = playlist></app-delete-playlist>
                 </div>
             </div>

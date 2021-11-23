@@ -1,1 +1,11 @@
-<p>edit-playlist-dialog works!</p>
+<div class="container">
+    <div mat-dialog-content>
+      <h1>Rentrez le nouveau nom de playlist :</h1>
+      <input class = "form-control" [(ngModel)]="nom_nouvelle_playlist">
+      <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Annuler</button>
+      <button mat-button (click)="onClick()">Modifier</button>
+    </div>
+  </div>

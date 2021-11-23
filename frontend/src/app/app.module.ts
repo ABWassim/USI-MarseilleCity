@@ -26,6 +26,7 @@ import { DeletePlaylistComponent } from './delete-playlist/delete-playlist.compo
 import { DeletePlaylistDialogComponent } from './delete-playlist-dialog/delete-playlist-dialog.component';
 import { DeleteVideoComponent } from './delete-video/delete-video.component';
 import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
+import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-d
     DeletePlaylistComponent,
     DeletePlaylistDialogComponent,
     DeleteVideoComponent,
-    DeleteVideoDialogComponent
+    DeleteVideoDialogComponent,
+    EditPlaylistComponent
   ],
   imports: [
     BrowserModule,
