@@ -12,32 +12,28 @@ import { Video } from '../video/video.component';
 export class SearchComponent implements OnInit {
   searchw = this.route.snapshot.paramMap.get('searchword');
   listeVideos: Video[] = [];
-  
-  constructor(private msgservice: MessageService, private route: ActivatedRoute,private router: Router) { }
-  searchword: string= "";
-  url: string="";
+  searchword = '';
+  url = '';
 
+  constructor(private msgservice: MessageService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
-    const data = {
-      query: this.searchw
-    };
-    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
+    this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', null).subscribe(
       reponse => {
         this.listeVideos = reponse.data;
-        console.log(this.listeVideos);
       }
     );
   }
-  affichage():void{
-    this.url = "/search/" + this.searchword;
+
+  getVideos(i): void {
+    this.url = '/search/' + this.searchword;
     this.router.navigateByUrl(this.url);
     const data = {
-      query: this.searchword
+      query: this.searchword,
+      page: i
     };
     this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
       reponse => {
         this.listeVideos = reponse.data;
-        console.log(this.listeVideos);
       }
     );
   }

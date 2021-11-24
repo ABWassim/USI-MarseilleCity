@@ -85,3 +85,15 @@
         height: 220px;
     }
 }
+
+.customPaginator {
+  margin-top: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li{
+    margin-right: 10px;
+  }
+}

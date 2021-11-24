@@ -14,11 +14,12 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path : 'home', component : HomeComponent},
   {path : 'video/:id', component : ZoomvideoComponent},
-  {path : 'search/:searchword', component :SearchComponent},
-  {path : 'inscription', component :InscriptionComponent},
-  {path : 'playlistpage', component :PlaylistpageComponent},
-  {path : 'userpage', component :UserComponent},
-  {path : 'playlist/:playlist', component :PlaylistComponent}
+  {path : 'search', component : SearchComponent},
+  {path : 'search/:searchword', component : SearchComponent},
+  {path : 'inscription', component : InscriptionComponent},
+  {path : 'playlistpage', component : PlaylistpageComponent},
+  {path : 'userpage', component : UserComponent},
+  {path : 'playlist/:playlist', component : PlaylistComponent}
 ];
 
 @NgModule({
