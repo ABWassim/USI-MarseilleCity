@@ -31,6 +31,10 @@ export class ZoomvideoComponent implements OnInit {
     this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideoById', data).subscribe(
       reponse => {
         this.videozoom = reponse.data;
+        this.videozoom.date = (this.videozoom.date.split('T'))[0];
+        const times = this.videozoom.date.split('-');
+        this.videozoom.date = times[2] + '-' + times[1] + '-' + times[0];
+
         if (this.provide === 'youtube'){
           this.newUrlVideo = 'https://www.youtube.com/embed/' + this.videozoom.id;
         }
