@@ -15,7 +15,7 @@ export class ZoomvideoComponent implements OnInit {
   concat = this.route.snapshot.paramMap.get('id');
   videozoom: any;
   newUrlVideo: string = '';
-  splitted = this.concat.split('-', 2);
+  splitted = this.concat.split('_', 2);
   idVideo = this.splitted[0];
   provide = this.splitted[1];
   url: SafeResourceUrl;

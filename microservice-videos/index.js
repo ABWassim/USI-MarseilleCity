@@ -22,9 +22,12 @@ let vimeoClient = new Vimeo("71dfd459a0c891822b0bcdd1a572fff6d7f57354",
 
 const getVideos = require ('./getVideos');
 const getVideoById = require('./getVideoById');
+const getTrendings = require('./getTrendings');
+
 
 app.post('/getVideos', (req, res) => {getVideos(req, res, youtubeClient, vimeoClient);});
 app.post('/getVideoById', (req, res) => {getVideoById(req, res, youtubeClient, vimeoClient);});
+app.post('/getTrendings', (req, res) => {getTrendings(req, res, youtubeClient, vimeoClient);});
 
 
 app.listen(3001, () => {console.log ('videos listening on port 3001')});

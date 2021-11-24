@@ -1,53 +1,71 @@
 const {sendMessage, sendError} = require('./message');
 
-function getVimeoVideos(vimeoClient, query) {
 
-  return new Promise((resolve, reject) => {
-      vimeoClient.request({
-        method: 'GET',
-        path: '/videos?per_page=10&sort=relevant&query=' + query,
-      }, function (error, body, status_code, headers) {
-        if (error) {
-          reject(['error', error]) ;
-        }
-
-        const titles = body.data.map((item) => item.name);
-        const uris = body.data.map((item) => item.uri);
-        const urlVideos = body.data.map((item) => item.link);
-        const channels = body.data.map((item) => item.user.name);
-        const urlChannels = body.data.map((item) => item.user.link);
-        const dates = body.data.map((item) => item.release_time);
-        const thumbnails = body.data.map((item) => item.pictures.base_link + '_1280x720?r=pad');
-        const descriptions = body.data.map((item) => item.description);
-
-        var allVideos = []
-        for (var i = 0 ; i < titles.length ; i++){
-          allVideos.push({
-              id: (uris[i].split('/'))[2],
-              title : titles[i],
-              urlVideo : urlVideos[i],
-              channel : channels[i],
-              urlChannel : urlChannels[i],
-              date : dates[i],
-              thumbnail : thumbnails[i],
-              description : descriptions[i],
-              provider: 'vimeo'
-          });
-        }
-        resolve(['ok', allVideos]);
-      })
-    });
-    
+function generateYoutubePageToken(limit, page) {
+    let s = 'A'
+    let start = 1 + (page - 1)*limit;
+    let array = ['A','E','I','M','Q','U','Y','c','g','k','o','s','w',0,4,8];
+    return 'C' + String.fromCharCode(s.charCodeAt(0) + Math.floor(start / 16)) + array[(start % 16) - 1] + 'QAA';
 }
 
-async function getYoutubeVideos(youtubeClient, query) {
+function getVimeoVideos(vimeoClient, query, page) {
     try {
+        return new Promise((resolve, reject) => {
+            const pageS = page.toString();
+            vimeoClient.request({
+                method: 'GET',
+                path: '/videos?per_page=10&page=' + pageS + '&query=' + query,
+            }, function (error, body, status_code, headers) {
+                if (error) {
+                    resolve(['error', status_code]) ;
+                    return;
+                }
+
+                var allVideos = []
+                const titles = body.data.map((item) => item.name);
+                const uris = body.data.map((item) => item.uri);
+                const urlVideos = body.data.map((item) => item.link);
+                const channels = body.data.map((item) => item.user.name);
+                const urlChannels = body.data.map((item) => item.user.link);
+                const dates = body.data.map((item) => item.release_time);
+                const thumbnails = body.data.map((item) => item.pictures.base_link + '_1280x720?r=pad');
+                const descriptions = body.data.map((item) => item.description);
+
+
+                for (var i = 0 ; i < titles.length ; i++){
+                    allVideos.push({
+                        id: (uris[i].split('/'))[2],
+                        title : titles[i],
+                        urlVideo : urlVideos[i],
+                        channel : channels[i],
+                        urlChannel : urlChannels[i],
+                        date : dates[i],
+                        thumbnail : thumbnails[i],
+                        description : descriptions[i],
+                        provider: 'vimeo'
+                    });
+                }
+
+                resolve(['ok', allVideos]);
+            })
+        });
+    }
+    catch (e) {
+        console.log(e)
+    }
+
+
+}
+
+async function getYoutubeVideos(youtubeClient, query, page) {
+    try {
+        const token = generateYoutubePageToken(10, page)
         const response = await youtubeClient.search.list({
-          part: "snippet",
-          q: query,
-          regionCode: "FR",
-          maxResults: 10,
-          type: 'video',
+            part: ["snippet"],
+            q: query,
+            maxResults: 10,
+            type: ['video'],
+            pageToken: token
         });
     
         const titles = response.data.items.map((item) => item.snippet.title);
@@ -84,21 +102,25 @@ async function getYoutubeVideos(youtubeClient, query) {
 async function getVideos(req, res, youtubeClient, vimeoClient)
 {
   if (!req.body.hasOwnProperty('query'))
-      return sendError(res, 'Vous n\'avez pas la query');
+      return sendError(res, 'No query was provided');
+
+    if (!req.body.hasOwnProperty('page'))
+        return sendError(res, 'No page was provided');
 
   const query = req.body.query;
+  const page = req.body.page
 
-  const [msg1, youtubeVideos] = await getYoutubeVideos(youtubeClient, query);
+  const [msg1, youtubeVideos] = await getYoutubeVideos(youtubeClient, query, page);
   if (msg1 === 'error'){
     return sendError(res, youtubeVideos);
   }
 
-  const [msg2, vimeoVideos] = await getVimeoVideos(vimeoClient, query);
+  let [msg2, vimeoVideos] = await getVimeoVideos(vimeoClient, query, page)
   if (msg2 === 'error'){
-      return sendError(res, vimeoVideos);
+      vimeoVideos = []
   }
 
-  sendMessage(res, youtubeVideos.concat(vimeoVideos));
+  return sendMessage(res, youtubeVideos.concat(vimeoVideos));
 }
 
 module.exports = getVideos;

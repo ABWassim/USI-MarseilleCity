@@ -5,19 +5,27 @@
     </a>
     <form class="form-inline">
         <input [(ngModel)]="searchword" name = "searchword" class="form-control mr-sm-2" type="search" placeholder="Rechercher ..." aria-label="Search">
-        <button (click)="affichage()" class="btn btn-outline-success my-2 my-sm-0" type="submit" >Rechercher</button>
+        <button (click)="getVideos(1)" class="btn btn-outline-success my-2 my-sm-0" type="submit" >Rechercher</button>
     </form>
     <div class="right">
         <a [routerLink]="['/playlistpage']"><i class="bi bi-music-note-list"></i></a>
         <a [routerLink]="['/userpage']"><i class="bi bi-person-fill"></i></a>
     </div>
-    
+
 </nav>
 <div class="grid">
     <ng-container *ngFor="let video of listeVideos">
-        <a [routerLink]="['/video', video.id + '-' + video.provider]" class="stretched-link">
+        <a [routerLink]="['/video', video.id + '_' + video.provider]" class="stretched-link">
             <img src={{video.thumbnail}}>
             <p>{{video.title}}</p>
         </a>
     </ng-container>
 </div>
+
+<nav aria-label="..."class = "customPaginator">
+  <ul class="pagination pagination-sm">
+    <li class="page-item" *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+      <a class="page-link" (click)="getVideos(i)">{{i}}</a>
+    </li>
+  </ul>
+</nav>
