@@ -4,7 +4,7 @@
         <p>WatchIt</p>
     </a>
     <form class="form-inline">
-        <input [(ngModel)]="searchword" name = "searchword" class="form-control mr-sm-2" type="search" placeholder="Rechercher ..." aria-label="Search">
+        <input [(ngModel)]="query" name = "searchword" class="form-control mr-sm-2" type="search" placeholder="Rechercher ..." aria-label="Search">
         <button (click)="getVideos(1)" class="btn btn-outline-success my-2 my-sm-0" type="submit" >Rechercher</button>
     </form>
     <div class="right">
@@ -29,7 +29,7 @@
 
 <div class="grid" *ngIf = "showVideos">
     <ng-container *ngFor="let video of listeVideos">
-        <a [routerLink]="['/video', video.id + '_' + video.provider]" class="stretched-link">
+        <a [routerLink]="['/video', video.id + '___' + video.provider]" class="stretched-link">
             <img src={{video.thumbnail}}>
             <p>{{video.title}}</p>
         </a>
