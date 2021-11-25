@@ -85,3 +85,30 @@
         height: 220px;
     }
 }
+
+.customPaginator {
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li{
+    margin-right: 20px;
+  }
+
+  .page-link{
+    border: 5px;
+    border-radius: 10px;
+    background-color: #702DFF;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.divSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+}
