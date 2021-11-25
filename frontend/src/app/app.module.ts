@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { VideoComponent } from './video/video.component';
@@ -27,12 +26,12 @@ import { DeletePlaylistDialogComponent } from './delete-playlist-dialog/delete-p
 import { DeleteVideoComponent } from './delete-video/delete-video.component';
 import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     NavbarComponent,
     VideoComponent,
     ZoomvideoComponent,
@@ -50,16 +49,17 @@ import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
     DeleteVideoDialogComponent,
     EditPlaylistComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        AppRoutingModule,
+        NgbModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
