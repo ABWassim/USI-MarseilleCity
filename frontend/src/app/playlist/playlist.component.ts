@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
-import { Video } from '../video/video.component';
 
 @Component({
   selector: 'app-playlist',

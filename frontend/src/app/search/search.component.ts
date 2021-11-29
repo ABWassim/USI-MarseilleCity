@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
-import { Video } from '../video/video.component';
 import {UserqueryService} from '../userquery.service';
+import {Video} from '../video';
 
 @Component({
   selector: 'app-search',
