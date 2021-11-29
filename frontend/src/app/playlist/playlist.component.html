@@ -3,7 +3,7 @@
 <ng-container *ngFor="let video of playlist">
     <a>
         <div class="card" >
-            <img [routerLink]="['/video', video.id + '-' + video.provider]" class="photo" src={{video.thumbnail}}>
+            <img [routerLink]="['/video', video.id + '___' + video.provider]" class="photo" src={{video.thumbnail}}>
             <div class="icone">
                 <app-delete-video (newItemEvent)="onDeleteVideo($event)" [videoId]=video.id [videoTitle] = video.title [playlistName]="titleplaylist"></app-delete-video>
             </div>
