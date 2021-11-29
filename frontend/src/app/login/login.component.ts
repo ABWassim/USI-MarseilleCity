@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
           this.authservice.finalizeAuthentication(reponse);
           if (this.authservice.isAuthenticated){
             this.errorMessage = '';
-            this.router.navigateByUrl('/search');
+            if (reponse.data === 0){
+              this.router.navigateByUrl('/search');
+            }
+            else {
+              this.router.navigateByUrl('/advert');
+            }
           }
           else {
             if (reponse.data.reason === 'Wrong mail/password combination'){
