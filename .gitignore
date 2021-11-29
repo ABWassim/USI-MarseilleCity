@@ -49,5 +49,6 @@ frontend/Thumbs.db
 microservice-playlists/node_modules
 microservice-users/node_modules
 microservice-videos/node_modules
+microservice-adverts/node_modules
 
 .idea/

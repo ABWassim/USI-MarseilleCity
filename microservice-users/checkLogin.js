@@ -30,7 +30,7 @@ async function checkLogin(req, res, db)
     else {
         const _userId = log[0]._id;
         auth.setSessionCookie(req, res, {userId: _userId});
-        sendMessage(res, 'Authenticated');
+        sendMessage(res, log[0].profil);
     }
 }
 

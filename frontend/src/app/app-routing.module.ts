@@ -7,6 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { UserComponent } from './user/user.component';
 import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import {AnnonceComponent} from './annonce/annonce.component';
 
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path : 'inscription', component : InscriptionComponent},
   {path : 'playlistpage', component : PlaylistpageComponent},
   {path : 'userpage', component : UserComponent},
-  {path : 'playlist/:playlist', component : PlaylistComponent}
+  {path : 'playlist/:playlist', component : PlaylistComponent},
+  {path : 'advert', component : AnnonceComponent}
 ];
 
 @NgModule({

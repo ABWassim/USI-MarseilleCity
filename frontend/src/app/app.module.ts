@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
-import { VideoComponent } from './video/video.component';
 import { ZoomvideoComponent } from './zoomvideo/zoomvideo.component';
 import { SearchComponent } from './search/search.component';
 import { InscriptionComponent } from './inscription/inscription.component';
@@ -27,13 +26,13 @@ import { DeleteVideoComponent } from './delete-video/delete-video.component';
 import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { AnnonceComponent } from './annonce/annonce.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    VideoComponent,
     ZoomvideoComponent,
     SearchComponent,
     InscriptionComponent,
@@ -47,7 +46,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     DeletePlaylistDialogComponent,
     DeleteVideoComponent,
     DeleteVideoDialogComponent,
-    EditPlaylistComponent
+    EditPlaylistComponent,
+    AnnonceComponent
   ],
     imports: [
         BrowserModule,
