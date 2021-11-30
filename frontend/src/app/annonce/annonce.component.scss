@@ -1,0 +1,23 @@
+@import "../../variable.scss";
+
+h1{
+    color: white;
+}
+
+input{
+    background-color: $violetbouton;
+    color: white;
+    transition: 0.3s;
+    border: none;
+}
+
+input:hover{
+    background-color: $hoverbouton;
+    border: none;
+}
+
+label:after{
+    background-color: $rose;
+    color: white;
+}
+
