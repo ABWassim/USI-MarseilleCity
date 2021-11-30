@@ -5,17 +5,18 @@ import { AuthService } from '../auth.service';
 import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-inscription',
-  templateUrl: './inscription.component.html',
-  styleUrls: ['./inscription.component.scss']
+  selector: 'app-inscription-annonceur',
+  templateUrl: './inscription-annonceur.component.html',
+  styleUrls: ['./inscription-annonceur.component.scss']
 })
-export class InscriptionComponent implements OnInit {
+export class InscriptionAnnonceurComponent implements OnInit {
   email = '';
   password = '';
   errorMessage = '';
   firstName = '';
   lastName = '';
   nationality = '';
+  company ='';
 
   constructor(private authservice: AuthService, private router: Router, private msgservice: MessageService) { }
 
@@ -30,13 +31,14 @@ export class InscriptionComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         nationality: this.nationality,
-        profile: 0
+        company: this.company,
+        profile: 1
       };
       this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
         reponse => {
           if (reponse.status === 'ok'){
             this.errorMessage = '';
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/advert');
           }
           else {
             if (reponse.data.reason === 'Email already used'){

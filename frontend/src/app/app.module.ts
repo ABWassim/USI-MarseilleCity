@@ -27,6 +27,8 @@ import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-d
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { AnnonceComponent } from './annonce/annonce.component';
+import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { AnnonceComponent } from './annonce/annonce.component';
     DeleteVideoComponent,
     DeleteVideoDialogComponent,
     EditPlaylistComponent,
-    AnnonceComponent
+    AnnonceComponent,
+    InscriptionAnnonceurComponent
   ],
     imports: [
         BrowserModule,
