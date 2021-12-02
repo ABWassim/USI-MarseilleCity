@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('/search');
             }
             else {
-              this.router.navigateByUrl('/advert');
+              this.router.navigateByUrl('/advertspage');
             }
           }
           else {

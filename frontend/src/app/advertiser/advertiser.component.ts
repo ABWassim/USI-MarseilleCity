@@ -29,7 +29,7 @@ export class AdvertiserComponent implements OnInit {
 
   ngOnInit(): void {
     const data = {};
-    this.msgservice.sendMessage( environment.debutUrlUser + '/getUserInformations', data).subscribe( //changer la route
+    this.msgservice.sendMessage( environment.debutUrlUser + '/getAdvertInformations', data).subscribe( //changer la route
       reponse => {
         if (reponse.status === 'ok'){
           this.firstName = reponse.data.firstName;

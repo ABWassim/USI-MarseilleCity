@@ -1,6 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Advert } from '../advert';
-
 
 
 @Component({
