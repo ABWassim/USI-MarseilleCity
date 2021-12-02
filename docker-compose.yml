@@ -4,8 +4,6 @@ services:
   backend-users:
     restart: on-failure
     image: backend-users
-    environment: 
-      - MONGODB_CONNSTRING=mongodb://root:root@db-users
     ports:
       - 3000:3000
 
@@ -18,15 +16,15 @@ services:
   backend-playlists:
     restart: on-failure
     image: backend-playlists
-    environment: 
-      - MONGODB_CONNSTRING=mongodb://root:root@db-playlists
     ports:
       - 3002:3002
 
-  
-  
-  
-  
+  backend-adverts:
+    restart: on-failure
+    image: backend-adverts
+    ports:
+      - 3003:3003
+
 
 
 
