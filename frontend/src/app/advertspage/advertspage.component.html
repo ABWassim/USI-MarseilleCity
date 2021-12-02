@@ -1,20 +1,19 @@
 <app-navbar-advert></app-navbar-advert>
-<div class="haut">
-    <h2>Mes annonces :</h2>
-    <!-- <app-create-playlist (newItemEvent)="onCreateAdvert($event)"></app-create-playlist> -->
-</div>
-
-<div class="grid">
-    <!-- <ng-container *ngFor="let advert of adverts">
-        <a class="stretched-link">
-            <div class="card">
-                <img class="photo" src="../../assets/playlist_photo.jpg">
-                <p>{{advert}}</p>
-                <div class="icone">
-                    <app-edit-advert (newItemEvent)="onEditAdvert($event, advert)" [playlistName] = advert></app-edit-advert>
-                    <app-delete-advert (newItemEvent)="onDeleteAdvert($event)" [playlistName] = advert></app-delete-advert>
-                </div>
+<h2>Mes annonces :</h2>
+<ng-container *ngFor="let advert of adverts">
+    <a>
+        <div class="cardadvert" >
+            <div class="containerPhoto">
+                <img class="photo" src={{advert.image}}>
             </div>
-        </a>
-    </ng-container> -->
-</div>
+            <div class="infoVideo">
+                <div class="icone">
+                    <!-- <app-edit-advert (newItemEvent)="onEditPlaylist($event, playlist)" [playlistName] = playlist></app-edit-advert> -->
+                    <!-- <app-delete-advert (newItemEvent)="onDeleteVideo($event)" [videoId]=video.id [videoTitle] = video.title [playlistName]="titleplaylist"></app-delete-advert> -->
+                </div>
+              <p class="title">{{advert.title}}</p>
+              <div class="description"><p>{{advert.description}} </p></div>
+            </div>
+        </div>
+    </a>
+</ng-container>

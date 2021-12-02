@@ -31,6 +31,12 @@ import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscripti
 import { NavbarAdvertComponent } from './navbar-advert/navbar-advert.component';
 import { AdvertspageComponent } from './advertspage/advertspage.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
+import { DeleteAdvertComponent } from './delete-advert/delete-advert.component';
+import { DeleteAdvertDialogComponent } from './delete-advert-dialog/delete-advert-dialog.component';
+import { EditAdvertComponent } from './edit-advert/edit-advert.component';
+import { EditAdvertDialogComponent } from './edit-advert-dialog/edit-advert-dialog.component';
+import { CreateAdvertDialogComponent } from './create-advert-dialog/create-advert-dialog.component';
+import { CreateAdvertComponent } from './create-advert/create-advert.component';
 
 
 @NgModule({
@@ -56,7 +62,13 @@ import { AdvertiserComponent } from './advertiser/advertiser.component';
     InscriptionAnnonceurComponent,
     NavbarAdvertComponent,
     AdvertspageComponent,
-    AdvertiserComponent
+    AdvertiserComponent,
+    DeleteAdvertComponent,
+    DeleteAdvertDialogComponent,
+    EditAdvertComponent,
+    EditAdvertDialogComponent,
+    CreateAdvertDialogComponent,
+    CreateAdvertComponent
   ],
     imports: [
         BrowserModule,

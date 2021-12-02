@@ -1,0 +1,29 @@
+@import "../../variable.scss";
+.container{
+  padding: 1rem;
+}
+h1
+{
+  font-size: 18px;
+  color: white;
+}
+
+.form-control
+{
+  background-color: white;
+  color: $violetbouton;
+  margin-top: 10px;
+  height : 35px;
+  margin-bottom: 1rem;
+}
+
+.mat-dialog-actions{
+  justify-content: center;
+  align-items: center;
+}
+.mat-button
+{
+  background-color: $boutongris;
+  color: black;
+}
+

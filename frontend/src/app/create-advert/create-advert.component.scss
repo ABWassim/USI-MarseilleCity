@@ -1,0 +1,10 @@
+@import "../../variable.scss";
+
+#buttonPlaylist{
+    background-color: $violetbouton;
+    color: white;
+    transition: 0.3s;
+}
+#buttonPlaylist:hover{
+    background-color: $hoverbouton;
+}
