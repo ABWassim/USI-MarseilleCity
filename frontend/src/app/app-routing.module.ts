@@ -8,6 +8,9 @@ import { UserComponent } from './user/user.component';
 import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import {AnnonceComponent} from './annonce/annonce.component';
+import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
+import { AdvertspageComponent } from './advertspage/advertspage.component';
+import { AdvertiserComponent } from './advertiser/advertiser.component';
 
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
@@ -18,7 +21,10 @@ const routes: Routes = [
   {path : 'playlistpage', component : PlaylistpageComponent},
   {path : 'userpage', component : UserComponent},
   {path : 'playlist/:playlist', component : PlaylistComponent},
-  {path : 'advert', component : AnnonceComponent}
+  {path : 'advert', component : AnnonceComponent},
+  {path : 'inscriptionAnnonceur', component : InscriptionAnnonceurComponent},
+  {path : 'advertspage', component : AdvertspageComponent},
+  {path : 'advertiserpage', component : AdvertiserComponent}
 ];
 
 @NgModule({

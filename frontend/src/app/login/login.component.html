@@ -18,6 +18,7 @@
             <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
             <button (click)="affichage()" type="submit" class="btn btn-primary">Se connecter</button>
             <p>Vous n’avez pas de compte ? <a [routerLink]="['/inscription']">S’inscrire.</a></p>
+            <p>Vous êtes annonceur ? <a [routerLink]="['/inscriptionAnnonceur']">Inscrivez vous ici.</a></p>
         </div>
     </div> 
 </div>

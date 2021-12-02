@@ -1,13 +1,27 @@
 {
-  "name": "microservice-adverts",
+  "name": "cloudinary_image_management_nodejs",
   "version": "1.0.0",
-  "description": "Advertising",
-  "main": "index.js",
+  "description": "Simple back-end app for image management using cloudinary api",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "test": "test"
   },
-  "author": "Wassim Ahmed-Belkacem - Emie Delepine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aligredo/Cloudinary-Image-Management-with-Node.js-Angular4.git"
+  },
+  "keywords": [
+    "cloudinary",
+    "nodejs",
+    "imageupload"
+  ],
+  "author": "Ali Ahmed (@aligredo)",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aligredo/Cloudinary-Image-Management-with-Node.js-Angular4/issues"
+  },
+  "homepage": "https://github.com/aligredo/Cloudinary-Image-Management-with-Node.js-Angular4#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "cloudinary": "^1.11.0",
