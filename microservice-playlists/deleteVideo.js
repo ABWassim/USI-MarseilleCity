@@ -47,9 +47,6 @@ async function deleteVideo(req, res, db)
         $pull: {videos: {id: _videoId}}
     }
 
-    console.log(query);
-    console.log(update);
-
     const [code2, ack] = await rmVideo(db, query, update);
     if (code2 === 'error'){
         return sendError(res, ack);

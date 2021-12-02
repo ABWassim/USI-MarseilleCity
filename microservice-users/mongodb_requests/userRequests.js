@@ -16,6 +16,15 @@ async function insertUser(db, doc) {
     });
 }
 
+async function insertAdvert(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").insertOne(doc, function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res.insertedId]);
+        });
+    });
+}
+
 async function updateUser(db, query, update) {
     return new Promise((resolve, reject) => {
         db.collection("users").updateOne(query, update ,function(err, res) {
@@ -24,6 +33,16 @@ async function updateUser(db, query, update) {
         });
     });
 }
+
+async function updateAdvert(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").updateOne(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
 
 async function getInfos(db, doc) {
     return new Promise((resolve, reject) => {
@@ -34,4 +53,4 @@ async function getInfos(db, doc) {
     });
 }
 
-module.exports = {getUser, insertUser, updateUser, getInfos}
+module.exports = {getUser, insertUser, insertAdvert, updateUser, updateAdvert, getInfos}
