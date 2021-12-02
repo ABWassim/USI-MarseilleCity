@@ -29,8 +29,7 @@ export class InscriptionComponent implements OnInit {
         password: this.password,
         firstName: this.firstName,
         lastName: this.lastName,
-        nationality: this.nationality,
-        profile: 0
+        nationality: this.nationality
       };
       this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
         reponse => {

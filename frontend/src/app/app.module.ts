@@ -28,6 +28,9 @@ import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { AnnonceComponent } from './annonce/annonce.component';
 import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
+import { NavbarAdvertComponent } from './navbar-advert/navbar-advert.component';
+import { AdvertspageComponent } from './advertspage/advertspage.component';
+import { AdvertiserComponent } from './advertiser/advertiser.component';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscripti
     DeleteVideoDialogComponent,
     EditPlaylistComponent,
     AnnonceComponent,
-    InscriptionAnnonceurComponent
+    InscriptionAnnonceurComponent,
+    NavbarAdvertComponent,
+    AdvertspageComponent,
+    AdvertiserComponent
   ],
     imports: [
         BrowserModule,

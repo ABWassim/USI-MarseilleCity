@@ -31,14 +31,13 @@ export class InscriptionAnnonceurComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         nationality: this.nationality,
-        company: this.company,
-        profile: 1
+        company: this.company
       };
-      this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
+      this.msgservice.sendMessage( environment.debutUrlUser + '/createAdvertAccount', data).subscribe(
         reponse => {
           if (reponse.status === 'ok'){
             this.errorMessage = '';
-            this.router.navigateByUrl('/advert');
+            this.router.navigateByUrl('/advertspage');
           }
           else {
             if (reponse.data.reason === 'Email already used'){
