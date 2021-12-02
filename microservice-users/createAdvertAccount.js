@@ -1,10 +1,10 @@
 const {sendMessage, sendError} = require('./message');
 const getUser = require('./mongodb_requests/userRequests').getUser
-const insertUser = require('./mongodb_requests/userRequests').insertUser
+const insertAdvert = require('./mongodb_requests/userRequests').insertAdvert
 const auth = require('./auth.js');
 const sha256 = require('sha256')
 
-async function createAccount(req, res, db)
+async function createAdvertAccount(req, res, db)
 {
     if (!req.body.hasOwnProperty('email'))
         return sendError(res, 'No email was provided');
@@ -21,6 +21,9 @@ async function createAccount(req, res, db)
     if (!req.body.hasOwnProperty('nationality'))
         return sendError(res, 'No nationality was provided');
 
+    if (!req.body.hasOwnProperty('company'))
+        return sendError(res, 'No company was provided');
+
     const [code1, existingUser] = await getUser(db, {email: req.body.email});
     if (code1 === 'error'){
         return sendError(res, existingUser);
@@ -35,11 +38,12 @@ async function createAccount(req, res, db)
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         nationality: req.body.nationality,
-        profil: 0,
+        company: req.body.company,
+        profil: 1,
         valid: 1
     }
 
-    const [code2, newUserId] = await insertUser(db, doc);
+    const [code2, newUserId] = await insertAdvert(db, doc);
     if (code2 === 'error'){
         return sendError(res, newUserId);
     }
@@ -47,4 +51,4 @@ async function createAccount(req, res, db)
     sendMessage(res, 'Account created and user authenticated');
 }
 
-module.exports = createAccount
+module.exports = createAdvertAccount
