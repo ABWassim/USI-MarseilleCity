@@ -16,4 +16,13 @@ async function insertAdvert(db, doc) {
     });
 }
 
-module.exports = {adverts, insertAdvert}
+async function rmAdvert(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("adverts").deleteOne(doc, function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+module.exports = {adverts, insertAdvert, rmAdvert}

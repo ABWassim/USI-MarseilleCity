@@ -29,10 +29,13 @@ cloudinary.config({  //Your Cloudinary API Data
 const getAdverts = require ('./getAdverts');
 const existingAdvert = require('./existingAdvert');
 const addAdvert = require('./addAdvert');
+const deleteAdvert = require('./deleteAdvert');
+
 
 app.post('/getAdverts', (req, res) => {getAdverts(req, res, db);});
 app.post('/existingAdvert', (req, res) => {existingAdvert(req, res, db);});
 app.post('/addAdvert', (req, res) => {addAdvert(req, res, db);});
+app.post('/deleteAdvert', (req, res) => {deleteAdvert(req, res, db);});
 
 
 const port = 3003;

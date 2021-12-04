@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   homePage(): void{
     this.userquery.query = '';
-    this.userquery.pageNumber = -1;
+    this.userquery.pageNumber = 1;
     this.router.navigateByUrl('/search');
   }
 }
