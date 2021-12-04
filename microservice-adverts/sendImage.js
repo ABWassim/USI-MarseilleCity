@@ -2,7 +2,8 @@ var express = require("express"),
     router = express.Router(),
     cloudinary = require('cloudinary'),
     multer  = require('multer'),
-    cloudinaryStorage = require('multer-storage-cloudinary');
+    cloudinaryStorage = require('multer-storage-cloudinary'),
+    crypto = require("crypto");
 
 //Configuring Cloudinary API
 cloudinary.config({
@@ -15,12 +16,16 @@ cloudinary.config({
 router.post("/sendImage",
     multer({storage: cloudinaryStorage({
             cloudinary: cloudinary,
-            allowedFormats: ['jpg', 'png'],
-            destination: function (req, file, callback) { callback(null, './uploads');},
-            filename: function (req, file, callback) { callback(null, "MyImage")}}) //MyImage is the name of the image which will be uploaded to your Cloudinary storage
+            allowedFormats: ['jpg', 'jpeg', 'png'],
+            destination: function (req, file, callback) {
+                callback(null, './uploads');},
+            filename: function (req, file, callback) {
+                const id = crypto.randomBytes(20).toString('hex');
+                callback(null, id)}}) //MyImage is the name of the image which will be uploaded to your Cloudinary storage
     }).single('Image'), function(req, res){ //To return OK status to the user after uploading
         return res.status(200).json({
-            msg:"Uploaded"
+            data: req.file.url
         })
     });
+
 module.exports = router;

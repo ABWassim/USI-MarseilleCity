@@ -1,5 +1,10 @@
 <app-navbar-advert></app-navbar-advert>
-<h2>Mes annonces :</h2>
+
+<div class="haut">
+  <h2>Mes annonces :</h2>
+  <app-create-advert (newItemEvent)="onCreateAdvert($event)"></app-create-advert>
+</div>
+
 <ng-container *ngFor="let advert of adverts">
     <a>
         <div class="cardadvert" >
@@ -7,12 +12,12 @@
                 <img class="photo" src={{advert.image}}>
             </div>
             <div class="infoVideo">
-                <div class="icone">
-                    <!-- <app-edit-advert (newItemEvent)="onEditPlaylist($event, playlist)" [playlistName] = playlist></app-edit-advert> -->
-                    <!-- <app-delete-advert (newItemEvent)="onDeleteVideo($event)" [videoId]=video.id [videoTitle] = video.title [playlistName]="titleplaylist"></app-delete-advert> -->
-                </div>
               <p class="title">{{advert.title}}</p>
               <div class="description"><p>{{advert.description}} </p></div>
+              <div class="icone">
+                <app-edit-advert (newItemEvent)="onEditPlaylist($event)" [oldTitle] = advert.title></app-edit-advert>
+                <app-delete-advert (newItemEvent)="onDeleteAdvert($event)" [advertTitle]= advert.titleq></app-delete-advert>
+              </div>
             </div>
         </div>
     </a>

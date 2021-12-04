@@ -17,7 +17,7 @@ export class DeletePlaylistDialogComponent {
               @Inject(MessageService) private messageService: MessageService) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('');
   }
 
   onClick(): void {
