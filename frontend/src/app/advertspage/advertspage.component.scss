@@ -9,6 +9,15 @@ h2{
     color: white;
     font-size: 30px;
 }
+.haut{
+  display: flex;
+  position: relative;
+}
+app-create-advert{
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
 a{
     color: black;
 }
@@ -52,8 +61,14 @@ a{
                   margin-right: 0.5rem;
               }
           }
+        .icone{
+          display: flex;
+          width: 100%;
+          height: 20%;
+          position: relative;
+        }
     }
-    
+
     .icone{
         display: flex;
         width: 100%;

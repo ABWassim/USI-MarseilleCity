@@ -7,4 +7,13 @@ async function adverts(db, doc) {
     });
 }
 
-module.exports = {adverts}
+async function insertAdvert(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("adverts").insertOne(doc, function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+module.exports = {adverts, insertAdvert}

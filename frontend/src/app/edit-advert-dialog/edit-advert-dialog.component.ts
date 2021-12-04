@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditAdvertDialogComponent implements OnInit {
 
+  nouveauNomAnnonce = '';
+  errorMessage = '';
+  nouvelleDescription = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onNoClick() {
+
+  }
+
+  onClick() {
+
+  }
 }

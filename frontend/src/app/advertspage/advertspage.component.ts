@@ -24,4 +24,30 @@ export class AdvertspageComponent implements OnInit {
     );
   }
 
+  onCreateAdvert(newAdvert: any): void {
+    if (newAdvert !== ''){
+      this.adverts.unshift(newAdvert);
+    }
+  }
+
+  onDeleteAdvert(oldAdvert: any): void{
+    if (oldAdvert !== ''){
+      let trouve = false;
+      let i = 0;
+      while (i < this.adverts.length && !trouve){
+        if (this.adverts[i].title === oldAdvert){
+          trouve = true;
+        }
+        else {
+          i++;
+        }
+      }
+      if (i !== this.adverts.length){
+        this.adverts.splice(i, 1);
+      }
+    }
+  }
+
+  onEditPlaylist(bow: any): void {
+  }
 }

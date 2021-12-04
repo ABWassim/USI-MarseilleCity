@@ -1,16 +1,20 @@
-<div class="container">
+<div *ngIf="!onSendRequest" class="container">
     <div mat-dialog-content>
-        <h1>Veuillez entrer le nom de la nouvelle annonce</h1>
-        <input class = "form-control" [(ngModel)]="nom_nouvelle_annonce">
-        <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
-        <h1>Veuillez entrer la description de la nouvelle annonce</h1>
-        <input class = "form-control" [(ngModel)]="description_annonce">
+        <h1>Veuillez entrer le nom de la nouvelle annonce : </h1>
+        <input class = "form-control" [(ngModel)]="nomNouvelleAnnonce">
+        <h1>Veuillez entrer la description de la nouvelle annonce : </h1>
+        <input class = "form-control" [(ngModel)]="descriptionAnnonce">
+        <h1>Choisisez votre image : </h1>
+        <input (change) = "onFileSelected($event)" type="file" class="form-control" type="file" id="formFile">
         <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
     </div>
+
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Annuler</button>
         <button mat-button (click)="onClick()">Créer</button>
     </div>
 </div>
 
-  
+<mat-spinner *ngIf="onSendRequest"></mat-spinner>
+
+
