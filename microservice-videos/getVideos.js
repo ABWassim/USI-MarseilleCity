@@ -104,8 +104,8 @@ async function getVideos(req, res, youtubeClient, vimeoClient)
   if (!req.body.hasOwnProperty('query'))
       return sendError(res, 'No query was provided');
 
-    if (!req.body.hasOwnProperty('page'))
-        return sendError(res, 'No page was provided');
+  if (!req.body.hasOwnProperty('page'))
+      return sendError(res, 'No page was provided');
 
   const query = req.body.query;
   const page = req.body.page

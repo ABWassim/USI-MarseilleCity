@@ -1,11 +1,18 @@
 const {sendMessage, sendError} = require('./message');
 
-function getTrendingVimeoVideos(vimeoClient) {
+function generateYoutubePageToken(limit, page) {
+    let s = 'A'
+    let start = 1 + (page - 1)*limit;
+    let array = ['A','E','I','M','Q','U','Y','c','g','k','o','s','w',0,4,8];
+    return 'C' + String.fromCharCode(s.charCodeAt(0) + Math.floor(start / 16)) + array[(start % 16) - 1] + 'QAA';
+}
+
+function getTrendingVimeoVideos(vimeoClient, page) {
 
     return new Promise((resolve, reject) => {
         vimeoClient.request({
             method: 'GET',
-            path: '/videos?per_page=10&sort=relevant&filter=trending&query=',
+            path: '/videos?page='+page.toString()+'&per_page=10&sort=relevant&filter=trending&query=',
         }, function (error, body, status_code, headers) {
             if (error) {
                 reject(['error', error]) ;
@@ -40,13 +47,14 @@ function getTrendingVimeoVideos(vimeoClient) {
 
 }
 
-async function getTrendingYoutubeVideos(youtubeClient) {
+async function getTrendingYoutubeVideos(youtubeClient, page) {
     try {
         const response = await youtubeClient.videos.list({
             part: "snippet",
             chart: 'mostPopular',
             regionCode: "FR",
-            maxResults: 10
+            maxResults: 10,
+            pageToken: generateYoutubePageToken(10, page)
         });
 
         const titles = response.data.items.map((item) => item.snippet.title);
@@ -82,12 +90,17 @@ async function getTrendingYoutubeVideos(youtubeClient) {
 
 async function getTrendings(req, res, youtubeClient, vimeoClient)
 {
-    const [msg1, youtubeVideos] = await getTrendingYoutubeVideos(youtubeClient);
+    if (!req.body.hasOwnProperty('page'))
+        return sendError(res, 'No page was provided');
+
+    const page = req.body.page;
+
+    const [msg1, youtubeVideos] = await getTrendingYoutubeVideos(youtubeClient, page);
     if (msg1 === 'error'){
         return sendError(res, youtubeVideos);
     }
 
-    const [msg2, vimeoVideos] = await getTrendingVimeoVideos(vimeoClient);
+    const [msg2, vimeoVideos] = await getTrendingVimeoVideos(vimeoClient, page);
     if (msg2 === 'error'){
         return sendError(res, vimeoVideos);
     }

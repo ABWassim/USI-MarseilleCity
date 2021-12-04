@@ -23,9 +23,15 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.query = this.userquery.query;
-    if (this.userquery.pageNumber === -1){
-      this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', null).subscribe(
+    if (this.query === ''){
+      const data = {
+        page: this.userquery.pageNumber
+      };
+      this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', data).subscribe(
         reponse => {
+          for (const d of reponse.data){
+            d.title = d.title.replace('&#39;', "'");
+          }
           this.showSpinner = false;
           this.listeVideos = reponse.data;
           this.showPaginator = true;
@@ -40,6 +46,9 @@ export class SearchComponent implements OnInit {
       };
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
         reponse => {
+          for (const d of reponse.data){
+            d.title = d.title.replace('&#39;', "'");
+          }
           this.showSpinner = false;
           this.listeVideos = reponse.data;
           this.showPaginator = true;
@@ -55,22 +64,42 @@ export class SearchComponent implements OnInit {
     this.showPaginator = false;
     this.showSpinner = true;
 
-    const data = {
-      query: this.query,
-      page: this.pageNumber
-    };
-
     this.userquery.query = this.query;
     this.userquery.pageNumber = this.pageNumber;
 
-    this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
-      reponse => {
-        this.listeVideos = reponse.data;
-        this.showSpinner = false;
-        this.showVideos = true;
-        this.showPaginator = true;
-      }
-    );
+    if (this.userquery.query !== ''){
+      const data = {
+        query: this.userquery.query,
+        page: this.userquery.pageNumber
+      };
+      this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
+        reponse => {
+          for (const d of reponse.data){
+            d.title = d.title.replace('&#39;', "'");
+          }
+          this.listeVideos = reponse.data;
+          this.showSpinner = false;
+          this.showVideos = true;
+          this.showPaginator = true;
+        }
+      );
+    }
+    else {
+      const data = {
+        page: this.userquery.pageNumber
+      };
+      this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', data).subscribe(
+        reponse => {
+          for (const d of reponse.data){
+            d.title = d.title.replace('&#39;', "'");
+          }
+          this.showSpinner = false;
+          this.listeVideos = reponse.data;
+          this.showPaginator = true;
+          this.showVideos = true;
+        }
+      );
+    }
   }
 
 }

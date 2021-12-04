@@ -10,7 +10,7 @@ import {environment} from "../../environments/environment";
 })
 export class DeleteAdvertDialogComponent implements OnInit {
 
-  advertTitle = this.data.playlistName;
+  advertTitle = this.data.advertTitle;
 
   constructor(public dialogRef: MatDialogRef<DeleteAdvertDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
