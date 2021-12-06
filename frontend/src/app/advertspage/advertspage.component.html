@@ -15,7 +15,7 @@
               <p class="title">{{advert.title}}</p>
               <div class="description"><p>{{advert.description}} </p></div>
               <div class="icone">
-                <app-edit-advert (newItemEvent)="onEditPlaylist($event)" [oldTitle] = advert.title></app-edit-advert>
+                <app-edit-advert (newItemEvent)="onEditAdvert($event, advert.title)" [oldTitle] = advert.title></app-edit-advert>
                 <app-delete-advert (newItemEvent)="onDeleteAdvert($event)" [advertTitle]= advert.title></app-delete-advert>
               </div>
             </div>

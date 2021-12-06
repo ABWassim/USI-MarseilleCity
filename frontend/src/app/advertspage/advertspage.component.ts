@@ -48,6 +48,19 @@ export class AdvertspageComponent implements OnInit {
     }
   }
 
-  onEditPlaylist(bow: any): void {
+  onEditAdvert(editedAdvert: any, oldTitle: string): void {
+    if (editedAdvert !== ''){
+      let i = 0;
+      let trouve = false;
+      while (i < this.adverts.length && !trouve){
+        if (this.adverts[i].title === oldTitle){
+          this.adverts[i] = editedAdvert;
+          trouve = true;
+        }
+        else {
+          i++;
+        }
+      }
+    }
   }
 }

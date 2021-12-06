@@ -32,6 +32,9 @@ export class CreateAdvertDialogComponent implements OnInit {
     if (this.nomNouvelleAnnonce === ''){
       this.errorMessage = 'Le nom de la nouvelle annonce est vide';
     }
+    else if (this.imageAnnonce === null){
+      this.errorMessage = 'Veuillez rentrer une image';
+    }
     else {
       this.onSendRequest = true;
 
