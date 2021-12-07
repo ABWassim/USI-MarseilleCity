@@ -25,4 +25,13 @@ async function rmAdvert(db, doc) {
     });
 }
 
-module.exports = {adverts, insertAdvert, rmAdvert}
+async function upAdvert(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("adverts").updateOne(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
+module.exports = {adverts, insertAdvert, rmAdvert, upAdvert}
