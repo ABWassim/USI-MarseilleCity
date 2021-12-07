@@ -110,12 +110,19 @@
         }
         margin-bottom: -0.5rem;
     }
-    p.provider{
+    .provider{
         font-size: 12px;
         margin-left: 0.5rem;
         color:  #9E9E9E;
     }
+    a:hover{
+        text-decoration: none;
+        p.title{
+            text-decoration: underline;
+        }
+    }
 }
+
 
 .customPaginator {
   margin-top: 25px;
