@@ -22,7 +22,10 @@
     <ng-container *ngFor="let video of listeVideos">
         <a [routerLink]="['/video', video.id + '___' + video.provider]" class="stretched-link">
             <img src={{video.thumbnail}}>
-            <p>{{video.title}}</p>
+            <p class="title">{{video.title}}</p>
+            <div class="channel"><i class="bi bi-person-fill"></i><p>{{video.channel}}</p></div>
+            <div class="date"><i class="bi bi-calendar"></i> <p>Postée le {{video.date}}</p></div>
+            <p class="provider">Provient de {{video.provider}}</p>
         </a>
     </ng-container>
 </div>
