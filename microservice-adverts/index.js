@@ -32,7 +32,7 @@ const addAdvert = require('./addAdvert');
 const deleteAdvert = require('./deleteAdvert');
 const updateAdvert = require('./updateAdvert');
 const getSpecificAdvert = require('./getSpecificAdvert');
-
+const getRandomAdvert = require('./getRandomAdvert');
 
 app.post('/getAdverts', (req, res) => {getAdverts(req, res, db);});
 app.post('/existingAdvert', (req, res) => {existingAdvert(req, res, db);});
@@ -40,6 +40,7 @@ app.post('/addAdvert', (req, res) => {addAdvert(req, res, db);});
 app.post('/deleteAdvert', (req, res) => {deleteAdvert(req, res, db);});
 app.post('/updateAdvert', (req, res) => {updateAdvert(req, res, db);});
 app.post('/getSpecificAdvert', (req, res) => {getSpecificAdvert(req, res, db);});
+app.post('/getRandomAdvert', (req, res) => {getRandomAdvert(req, res, db);});
 
 
 const port = 3003;

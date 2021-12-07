@@ -37,6 +37,7 @@ import { EditAdvertComponent } from './edit-advert/edit-advert.component';
 import { EditAdvertDialogComponent } from './edit-advert-dialog/edit-advert-dialog.component';
 import { CreateAdvertDialogComponent } from './create-advert-dialog/create-advert-dialog.component';
 import { CreateAdvertComponent } from './create-advert/create-advert.component';
+import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { CreateAdvertComponent } from './create-advert/create-advert.component';
         HttpClientModule,
         MatButtonModule,
         MatDialogModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSelectCountryModule.forRoot('fr')
     ],
   providers: [],
   bootstrap: [AppComponent]
