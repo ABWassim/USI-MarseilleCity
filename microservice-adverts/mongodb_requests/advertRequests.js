@@ -34,4 +34,13 @@ async function upAdvert(db, query, update) {
     });
 }
 
-module.exports = {adverts, insertAdvert, rmAdvert, upAdvert}
+async function randomAdvert(db) {
+    return new Promise((resolve, reject) => {
+        db.collection("adverts").aggregate([{$sample: {size: 1}}]).toArray(function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+module.exports = {adverts, insertAdvert, rmAdvert, upAdvert, randomAdvert}
