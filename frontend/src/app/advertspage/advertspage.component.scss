@@ -21,6 +21,9 @@ app-create-advert{
 a{
     color: black;
 }
+a:hover{
+    text-decoration: none !important;
+}
 .cardadvert{
     display: flex !important;
     margin: auto;
