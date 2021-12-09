@@ -65,6 +65,7 @@ div.logo{
         box-shadow: none !important;
         border-radius: 0;
         border-bottom: solid 2px $violetbouton;
+        
     }
 
     #selectCountry{
@@ -95,6 +96,14 @@ div.logo{
         }
         ::ng-deep .mat-form-field-flex{
             padding-bottom: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        ::ng-deep input.mat-input-element{
+            padding-left: 0.8rem;
+            padding-top: 0.5rem;
+        }
+        ::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+            display: none;
         }
     }
     
