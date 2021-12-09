@@ -21,9 +21,18 @@ export class ZoomvideoComponent implements OnInit {
   url: SafeResourceUrl;
   playlists: string[] = [];
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
+  urlAdd = '';
+  titleAdd = '';
+  descriptionAdd = '';
+  showContent = true;
+
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private sanitizer: DomSanitizer,
+              private router: Router){}
 
   ngOnInit(): void {
+    this.tryShowAdd();
     const data = {
       id: this.idVideo,
       provider : this.provide
@@ -44,10 +53,9 @@ export class ZoomvideoComponent implements OnInit {
         console.log(this.newUrlVideo);
       }
     );
-    this.url=this.getSafeURL();
+    this.url = this.getSafeURL();
 
-    const data2 = {};
-    this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getPlaylists', data2).subscribe(
+    this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getPlaylists', {}).subscribe(
       reponse => {
         this.playlists = reponse.data;
       }
@@ -58,7 +66,7 @@ export class ZoomvideoComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.newUrlVideo);
   }
 
-  addVideo(playlist: string):void{
+  addVideo(playlist: string): void {
     const data = {
       name: playlist,
       video: this.videozoom
@@ -68,6 +76,24 @@ export class ZoomvideoComponent implements OnInit {
           console.log(reponse);
       }
     );
+  }
+
+  tryShowAdd(): void {
+    const p = Math.floor(Math.random());
+    if (p === 0){
+      this.showContent = false;
+      this.msgservice.sendMessage( environment.debutUrlAdverts + '/getRandomAdvert', {}).subscribe(
+        reponse => {
+          this.urlAdd = reponse.data.image;
+          this.titleAdd = reponse.data.title;
+          this.descriptionAdd = reponse.data.description;
+        }
+      );
+    }
+  }
+
+  closeAdd(): void{
+    this.showContent = true;
   }
 }
 

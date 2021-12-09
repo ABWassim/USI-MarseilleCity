@@ -107,4 +107,7 @@ export class AdvertiserComponent implements OnInit {
       });
   }
 
+  countrySelected(event: any): void{
+    this.newNationality = event.alpha3Code;
+  }
 }

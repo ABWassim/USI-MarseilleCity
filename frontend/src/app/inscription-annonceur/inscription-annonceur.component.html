@@ -3,7 +3,7 @@
         <img src="../../assets/Image1.png">
         <h2>WatchIt</h2>
         <div class="annonce">
-            <h1>Créez, modifiez, visionnez vos playlists réunissant des vidéos Youtube et Vimeo !</h1>
+            <h1>Enrengistrez vos publicités qui seront diffusées chez les utilisateurs !</h1>
         </div>
     </div>
 
@@ -22,10 +22,10 @@
                 <input [(ngModel)]="lastName" type="lastName" class="form-control" id="exampleInputPassword1" placeholder="Nom de famille">
             </div>
             <div class="form-group">
-                <mat-select-country id = "selectCountry" placeHolder="Nationalité"></mat-select-country>
+                <mat-select-country (onCountrySelected)="countrySelected($event)" id = "selectCountry" placeHolder="Nationalité"></mat-select-country>
             </div>
             <div class="form-group">
-                <input [(ngModel)]="company" type="company" class="form-control" id="exampleInputPassword1" placeholder="Entreprise">
+                <input [(ngModel)]="company" type="company" class="form-control" id="exampleInputPassword1" placeholder="Agence">
             </div>
             <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
             <button (click)="affichage()" type="submit" class="btn btn-primary">S'inscrire</button>

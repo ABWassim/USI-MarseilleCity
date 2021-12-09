@@ -1,16 +1,16 @@
 <app-navbar></app-navbar>
-<div class="zoom_video">
+<div class="zoom_video" *ngIf="showContent">
     <iframe title="YouTube" width="990" height="530" [src]="getSafeURL()" frameborder="0" allowfullscreen></iframe>
     <div class="description">
       <h2>Description :</h2>
       <p>{{videozoom.description}}</p>
     </div>
 </div>
-<div class="bloc_right">
+<div class="bloc_right" *ngIf="showContent">
   <div class="infoVideo">
     <h2 class="title">{{videozoom.title}}</h2>
   </div>
-  <div class="barre">
+  <div class="barre" >
     <div class="channel"><i class="bi bi-person-fill"></i> <p>{{videozoom.channel}} </p></div>
     <div class="date"><i class="bi bi-calendar"></i> <p>Postée le {{videozoom.date}}</p></div>
     <div class="dropdown">
@@ -18,7 +18,7 @@
       <div class="dropdown-content">
         <a *ngFor="let playlist of playlists" (click)="addVideo(playlist)">{{playlist}}</a>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
 
@@ -32,7 +32,7 @@
             <div class="dropdown-content">
               <a *ngFor="let playlist of playlists" (click)="addVideo(playlist)">{{playlist}}</a>
             </div>
-        </div> 
+        </div>
         <div class="infoVideo">
           <p class="title">{{videozoom.title}}</p>
           <div class="channel"><i class="bi bi-person-fill"></i> <p>{{videozoom.channel}} </p></div>
@@ -44,3 +44,10 @@
   <h2>Description :</h2>
   <p>{{videozoom.description}}</p>
 </div> -->
+
+<div class="addContainer" *ngIf="!showContent">
+  <h1>{{titleAdd}}</h1>
+  <img [src] = "urlAdd">
+  <p>{{descriptionAdd}}</p>
+  <button (click)="closeAdd()" class="dropbtn btn my-2 my-sm-0" type="submit">Fermer l'annonce</button>
+</div>
