@@ -101,5 +101,9 @@ export class UserComponent implements OnInit {
         }
       });
   }
+
+  countrySelected(event: any): void{
+    this.newNationality = event.alpha3Code;
+  }
 }
 

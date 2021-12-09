@@ -65,7 +65,7 @@ div.logo{
         box-shadow: none !important;
         border-radius: 0;
         border-bottom: solid 2px $violetbouton;
-        
+
     }
 
     #selectCountry{
@@ -106,12 +106,8 @@ div.logo{
             display: none;
         }
     }
-    
+
     input::placeholder {
         color: $violetbouton;
     }
 }
-
-// #selectCountry{
-
-// }

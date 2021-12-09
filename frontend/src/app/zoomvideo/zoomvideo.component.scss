@@ -67,13 +67,13 @@
       border: none;
       width: 200px
     }
-    
+
     /* The container <div> - needed to position the dropdown content */
     .dropdown {
       position: relative;
       display: inline-block;
     }
-    
+
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
       display: none;
@@ -85,7 +85,7 @@
       right: -160px;
       bottom: 0;
     }
-    
+
     /* Links inside the dropdown */
     .dropdown-content a {
       color: black;
@@ -94,19 +94,57 @@
       display: block;
       cursor: pointer;
     }
-    
+
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {background-color: $boutongris;}
-    
+
     /* Show the dropdown menu on hover */
     .dropdown:hover .dropdown-content {display: block;}
-    
+
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {background-color: $hoverbouton;}
-  
+
   }
 }
 
+.addContainer
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 40px;
+
+  h1{
+    color: white;
+    font-size: 30px;
+  }
+
+  img{
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  p{
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  button {
+    background-color: $violetbouton;
+    color: white;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: none;
+    width: 200px;
+    margin-top: 500px;
+  }
+}
 
 // .bloc_right .infoVideo{
 //   display: block;

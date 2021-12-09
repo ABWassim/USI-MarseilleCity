@@ -15,7 +15,7 @@
             <input [(ngModel)]="newCompany" type="company" class="form-control"  placeholder={{company}}>
         </div> -->
         <div class="form-group">
-            <mat-select-country id = "selectCountry" placeHolder="Nationalité"></mat-select-country>
+          <mat-select-country (onCountrySelected)="countrySelected($event)" id = "selectCountry" [placeHolder]="nationality"></mat-select-country>
         </div>
         <div style = "margin-top: 10px;" *ngIf="errorMessagegauche.length!=0" class="alert alert-danger" role="alert">{{errorMessagegauche}}</div>
         <div style = "margin-top: 10px;" *ngIf="checkMessagegauche.length!=0" class="alert alert-success" role="alert">{{checkMessagegauche}}</div>

@@ -53,7 +53,6 @@ export class InscriptionAnnonceurComponent implements OnInit {
 
   checkInputs(): boolean {
     const reg = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-    console.log(this.email);
     if (!reg.test(this.email)){
       this.errorMessage = "Le format de l'adresse mail est invalide";
       return false;
@@ -62,7 +61,27 @@ export class InscriptionAnnonceurComponent implements OnInit {
       this.errorMessage = "Le mot de passe doit contenir au minimum 8 caractères";
       return false;
     }
+    if (this.firstName === ''){
+      this.errorMessage = "Veuillez rentrer un prénom";
+      return false;
+    }
+    if (this.lastName === ''){
+      this.errorMessage = "Veuillez rentrer un nom de famille";
+      return false;
+    }
+    if (this.nationality === ''){
+      this.errorMessage = "Veuillez selectionner une nationalité";
+      return false;
+    }
+    if (this.company === ''){
+      this.errorMessage = "Veuillez rentrer le nom de votre agence";
+      return false;
+    }
     return true;
+  }
+
+  countrySelected(event: any): void{
+    this.nationality = event.alpha3Code;
   }
 
 }
