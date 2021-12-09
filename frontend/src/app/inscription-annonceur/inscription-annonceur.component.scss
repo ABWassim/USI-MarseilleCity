@@ -21,13 +21,25 @@ div.logo{
         color: white;
         font-weight: 700;
         font-size: 40px;
+        margin-top: 0.5rem;
+    }
+    .annonce{
+        color: white;
+        margin-top: 2.5rem;
+        h1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            width: 90%;
+            margin: auto;
+            font-size: 25px;
+        }
     }
 }
 
 .inscription{
-    width: 50%;
+    width: 45%;
     .inscription-container{
-        width: 50%;
+        margin: auto;
+        width: 60%;
         padding: 2rem;
         background-color: white;
         border-radius: 10px;
