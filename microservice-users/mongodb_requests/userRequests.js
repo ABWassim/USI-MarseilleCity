@@ -34,15 +34,6 @@ async function updateUser(db, query, update) {
     });
 }
 
-async function updateAdvert(db, query, update) {
-    return new Promise((resolve, reject) => {
-        db.collection("users").updateOne(query, update ,function(err, res) {
-            if (err) reject(['error', err]);
-            resolve(['ok', res]);
-        });
-    });
-}
-
 
 async function getInfos(db, doc) {
     return new Promise((resolve, reject) => {
@@ -53,4 +44,22 @@ async function getInfos(db, doc) {
     });
 }
 
-module.exports = {getUser, insertUser, insertAdvert, updateUser, updateAdvert, getInfos}
+async function getEveryUser(db) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").find().project({_id: 0}).toArray(function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+async function changeStatus(db, query, update) {
+    return new Promise((resolve, reject) => {
+        db.collection("users").updateOne(query, update ,function(err, res) {
+            if (err) reject(['error', err]);
+            resolve(['ok', res]);
+        });
+    });
+}
+
+module.exports = {getUser, insertUser, insertAdvert, updateUser, getInfos, getEveryUser, changeStatus}

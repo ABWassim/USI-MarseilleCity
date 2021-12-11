@@ -25,7 +25,8 @@ const updateAccount = require('./updateAccount');
 const updateAdvertAccount = require('./updateAdvertAccount');
 const getUserInformations = require('./getUserInformations');
 const getAdvertInformations = require('./getAdvertInformations');
-
+const getUsers = require('./getUsers');
+const changeStatusAccount = require('./changeStatusAccount');
 
 app.post('/checkLogin', (req, res) => {checkLogin(req, res, db);});
 app.post('/createAccount', (req, res) => {createAccount(req, res, db);});
@@ -34,6 +35,8 @@ app.post('/updateAccount', (req, res) => {updateAccount(req, res, db);});
 app.post('/updateAdvertAccount', (req, res) => {updateAdvertAccount(req, res, db);});
 app.post('/getUserInformations', (req, res) => {getUserInformations(req, res, db);});
 app.post('/getAdvertInformations', (req, res) => {getAdvertInformations(req, res, db);});
+app.post('/getUsers', (req, res) => {getUsers(req, res, db);});
+app.post('/changeStatusAccount', (req, res) => {changeStatusAccount(req, res, db);});
 
 
 app.listen(3000, () => {console.log ('users listening on port 3000')});
