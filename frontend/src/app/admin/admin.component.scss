@@ -1,5 +1,22 @@
 @import "../../variable.scss";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+.navbar{
+    z-index: 10;
+    justify-content: left;
+    //  background: linear-gradient(#702DFF,#937AC9);
+     background: linear-gradient(178deg, #702DFF 15%, #937AC9 90%);
+  cursor: pointer;
+    a{
+        display: flex;
+        p{
+            color: white;
+            font-weight: 600;
+            margin:auto;
+            padding-left: 5px;
+        }
+    }
+}
+
 .stretched-link::after {
     position: relative;
 }

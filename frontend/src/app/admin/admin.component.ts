@@ -39,5 +39,4 @@ export class AdminComponent implements OnInit {
     console.log("ok");
     this.ngOnInit();
   }
-
 }
