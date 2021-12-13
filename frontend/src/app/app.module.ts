@@ -38,6 +38,7 @@ import { EditAdvertDialogComponent } from './edit-advert-dialog/edit-advert-dial
 import { CreateAdvertDialogComponent } from './create-advert-dialog/create-advert-dialog.component';
 import { CreateAdvertComponent } from './create-advert/create-advert.component';
 import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { MatSelectCountryModule } from "@angular-material-extensions/select-coun
     EditAdvertComponent,
     EditAdvertDialogComponent,
     CreateAdvertDialogComponent,
-    CreateAdvertComponent
+    CreateAdvertComponent,
+    AdminComponent
   ],
     imports: [
         BrowserModule,

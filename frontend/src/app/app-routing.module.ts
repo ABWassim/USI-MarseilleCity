@@ -11,6 +11,7 @@ import {AnnonceComponent} from './annonce/annonce.component';
 import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
 import { AdvertspageComponent } from './advertspage/advertspage.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path : 'advert', component : AnnonceComponent},
   {path : 'inscriptionAnnonceur', component : InscriptionAnnonceurComponent},
   {path : 'advertspage', component : AdvertspageComponent},
-  {path : 'advertiserpage', component : AdvertiserComponent}
+  {path : 'advertiserpage', component : AdvertiserComponent},
+  {path : 'adminpage', component : AdminComponent}
 ];
 
 @NgModule({

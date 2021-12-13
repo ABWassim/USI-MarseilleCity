@@ -34,8 +34,11 @@ export class LoginComponent implements OnInit {
             if (reponse.data === 0){
               this.router.navigateByUrl('/search');
             }
-            else {
+            else if (reponse.data === 1) {
               this.router.navigateByUrl('/advertspage');
+            }
+            else {
+              this.router.navigateByUrl('/adminpage');
             }
           }
           else {

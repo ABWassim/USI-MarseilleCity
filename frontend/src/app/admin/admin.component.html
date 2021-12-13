@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="haut">
+    <h2>Liste des utilisateurs et annonceurs :</h2>
+    <!-- <app-create-playlist (newItemEvent)="onCreatePlaylist($event)"></app-create-playlist> -->
+</div>
+
+<div class="grid">
+    <ng-container *ngFor="let user of users">
+        <div class="card">
+            <img class="photo" src="../../assets/playlist_photo.jpg">
+            <p>{{user.firstName}}  {{user.lastName}}</p>
+            <ng-template [ngIf]="user.profil == 0">Utilisateur</ng-template>
+            <ng-template [ngIf]="user.profil == 1">Annonceur</ng-template>
+            <ng-template [ngIf]="user.profil == 2">Administrateur</ng-template>
+            <p>{{user.email}}</p>
+            <div *ngIf="user.valid; else elseBlock">
+                <button id="buttonUser" mat-raised-button (click)="buttonClick(user.email,user.valid)" >Suspendre</button>
+            </div>
+            <ng-template #elseBlock>
+                <button id="buttonUser" mat-raised-button (click)="buttonClick(user.email,user.valid)">Rétablir</button>
+            </ng-template>
+        </div>
+    </ng-container>
+</div>
