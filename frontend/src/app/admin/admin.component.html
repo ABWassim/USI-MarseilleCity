@@ -7,12 +7,12 @@
 <div class="grid">
     <ng-container *ngFor="let user of users">
         <div class="card">
-            <img class="photo" src="../../assets/playlist_photo.jpg">
-            <p>{{user.firstName}}  {{user.lastName}}</p>
-            <ng-template [ngIf]="user.profil == 0">Utilisateur</ng-template>
-            <ng-template [ngIf]="user.profil == 1">Annonceur</ng-template>
-            <ng-template [ngIf]="user.profil == 2">Administrateur</ng-template>
-            <p>{{user.email}}</p>
+            <img class="photo" src="../../assets/user2.jpg">
+            <p class="name">{{user.firstName}}  {{user.lastName}}</p>
+            <ng-template [ngIf]="user.profil == 0"><p class="profil">Utilisateur</p></ng-template>
+            <ng-template [ngIf]="user.profil == 1"><p class="profil">Annonceur</p></ng-template>
+            <ng-template [ngIf]="user.profil == 2"><p class="profil">Administrateur</p></ng-template>
+            <div class="mail"><i class="bi bi-envelope-fill"></i><p>{{user.email}}</p></div>
             <div *ngIf="user.valid; else elseBlock">
                 <button id="buttonUser" mat-raised-button (click)="buttonClick(user.email,user.valid)" >Suspendre</button>
             </div>

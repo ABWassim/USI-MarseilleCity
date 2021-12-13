@@ -3,92 +3,66 @@
 .stretched-link::after {
     position: relative;
 }
-
 h2{
     font-size: 30px;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     color: white;
 }
-.haut{
-    display: flex;
-    position: relative;
-}
-app-create-playlist{
-    position: absolute;
-    right: 2rem;
-    top: 2rem;
-}
 .grid {
-  img{
-    cursor: pointer;
-  }
     z-index: 0;
     padding-top: 1rem;
     padding-left: 1.5rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr; /* Create 2 columns and auto-place rows */
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr; /* Create 2 columns and auto-place rows */
     ng-container{
         display: block;
-    }
-    a{
-        margin-bottom: 2rem;
-        color: black;
-    }
-    a:hover{
-        text-decoration: none;
     }
     .card{
         display: flex;
         align-content: center;
         align-items: center;
         text-align: center;
-        width: 80%;
+        width: 90%;
         height: 300px;
         background-color: $boutongris;
         border-radius: 10px;
         border: solid 2px $violetbouton;
         transition: 0.3s;
         img.photo{
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            width: 40%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            width: 50%;
             height: auto;
             border: solid 1px black;
             border-radius: 50%;
         }
-        .icone{
+        p.name{
+            font-weight:500;
+            margin-bottom: 0;
+        }
+        p.profil{
+            font-weight: 200;
+            padding-top: 0;
+        }
+        .mail {
             display: flex;
-            width: 100%;
-            height: 20%;
-            position: relative;
+            .bi{
+                width: 20px;
+                padding-right: 0.4rem;
+            }
+            padding-bottom: 1rem;
         }
-        .bi{
-            position: absolute;
-            border: solid 1px black;
-            border-radius: 50%;
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-right: 4px;
-            padding-left: 4px;
-            background-color: white;
-            font-size: 15px;
-        }
-        .bi-pencil-square{
-            right: 2.5rem;
-            bottom: 0.5rem;
-        }
-        .bi-pencil-square:hover{
+        button{
             background-color: $violetbouton;
             color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition: 0.3s;
         }
-        .bi-trash{
-            right: 0.5rem;
-            bottom: 0.5rem;
-        }
-        .bi-trash:hover{
-            background-color: $violetbouton;
-            color: white;
+        button:hover{
+            background-color: $hoverbouton;
         }
     }
     .card:hover{
