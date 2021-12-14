@@ -89,6 +89,12 @@ app-create-playlist{
             background-color: $violetbouton;
             color: white;
         }
+        p.titre{
+            font-size: 25px;
+            font-family:'Times New Roman', Times, serif;
+            font-style: oblique;
+            font-weight: 600;
+        }
     }
     .card:hover{
         background-color: #AEAEAE;

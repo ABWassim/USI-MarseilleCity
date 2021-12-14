@@ -9,7 +9,7 @@
         <a class="stretched-link">
             <div class="card">
                 <img [routerLink]="['/playlist', playlist]" class="photo" src="../../assets/playlist_photo.jpg">
-                <p>{{playlist}}</p>
+                <p class="titre">{{playlist}}</p>
                 <div class="icone">
                     <app-edit-playlist (newItemEvent)="onEditPlaylist($event, playlist)" [playlistName] = playlist></app-edit-playlist>
                     <app-delete-playlist (newItemEvent)="onDeletePlaylist($event)" [playlistName] = playlist></app-delete-playlist>
