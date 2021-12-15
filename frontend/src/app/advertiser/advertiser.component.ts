@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-advertiser',
@@ -25,7 +26,10 @@ export class AdvertiserComponent implements OnInit {
   errorMessagedroit = '';
   checkMessagedroit = '';
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private authservice: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     const data = {};
@@ -109,5 +113,9 @@ export class AdvertiserComponent implements OnInit {
 
   countrySelected(event: any): void{
     this.newNationality = event.alpha3Code;
+  }
+  disconnect(): void{
+    this.authservice.profile = -1;
+    this.router.navigateByUrl('login');
   }
 }

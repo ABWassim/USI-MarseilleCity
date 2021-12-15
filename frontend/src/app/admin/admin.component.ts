@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   users: any[] = [];
   user: any;
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute,public dialog: MatDialog) { }
+  constructor(private msgservice: MessageService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     const data = {};

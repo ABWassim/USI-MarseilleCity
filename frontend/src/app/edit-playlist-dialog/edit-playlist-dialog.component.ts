@@ -18,7 +18,7 @@ export class EditPlaylistDialogComponent {
     @Inject(MessageService) private messageService: MessageService) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('');
   }
 
   onClick(): void {
@@ -28,7 +28,7 @@ export class EditPlaylistDialogComponent {
     };
     this.messageService.sendMessage( environment.debutUrlPlaylist + '/renamePlaylist', data).subscribe(
       retour => {
-        if (retour.status == 'ok'){
+        if (retour.status === 'ok'){
           this.errorMessage = '';
           this.dialogRef.close(retour.data);
         }

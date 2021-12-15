@@ -12,21 +12,27 @@ import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscripti
 import { AdvertspageComponent } from './advertspage/advertspage.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
 import { AdminComponent } from './admin/admin.component';
+import {UserGuard} from './user.guard';
+import {AdvertGuard} from './advert.guard';
+import {AdminGuard} from './admin.guard';
 
 const routes: Routes = [
   {path : 'login', component : LoginComponent},
   {path: '', pathMatch: 'full', redirectTo: 'login'},
-  {path : 'video/:id', component : ZoomvideoComponent},
-  {path : 'search', component : SearchComponent},
   {path : 'inscription', component : InscriptionComponent},
-  {path : 'playlistpage', component : PlaylistpageComponent},
-  {path : 'userpage', component : UserComponent},
-  {path : 'playlist/:playlist', component : PlaylistComponent},
-  {path : 'advert', component : AnnonceComponent},
   {path : 'inscriptionAnnonceur', component : InscriptionAnnonceurComponent},
-  {path : 'advertspage', component : AdvertspageComponent},
-  {path : 'advertiserpage', component : AdvertiserComponent},
-  {path : 'adminpage', component : AdminComponent}
+
+  {path : 'video/:id', component : ZoomvideoComponent, canActivate: [UserGuard]},
+  {path : 'search', component : SearchComponent, canActivate: [UserGuard]},
+  {path : 'playlistpage', component : PlaylistpageComponent, canActivate: [UserGuard]},
+  {path : 'userpage', component : UserComponent, canActivate: [UserGuard]},
+  {path : 'playlist/:playlist', component : PlaylistComponent, canActivate: [UserGuard]},
+
+  {path : 'advert', component : AnnonceComponent, canActivate: [AdvertGuard]},
+  {path : 'advertspage', component : AdvertspageComponent, canActivate: [AdvertGuard]},
+  {path : 'advertiserpage', component : AdvertiserComponent, canActivate: [AdvertGuard]},
+
+  {path : 'adminpage', component : AdminComponent, canActivate: [AdminGuard]}
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-user',
@@ -23,7 +24,10 @@ export class UserComponent implements OnInit {
   errorMessagedroit = '';
   checkMessagedroit = '';
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private authservice: AuthService) { }
 
   ngOnInit(): void {
     const data = {};
@@ -104,6 +108,11 @@ export class UserComponent implements OnInit {
 
   countrySelected(event: any): void{
     this.newNationality = event.alpha3Code;
+  }
+
+  disconnect(): void{
+    this.authservice.profile = -1;
+    this.router.navigateByUrl('login');
   }
 }
 
