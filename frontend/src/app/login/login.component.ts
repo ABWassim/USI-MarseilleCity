@@ -15,7 +15,7 @@ import {environment} from '../../environments/environment';
 export class LoginComponent implements OnInit {
   email = '';
   password = '';
-  errorMessage = "";
+  errorMessage = '';
   phpData: Phpdata = {status: '', data: null};
 
   constructor(private authservice: AuthService, private router: Router) { }
@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
 
   checkInputs(): boolean {
     const reg = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-    console.log(this.email);
     if (!reg.test(this.email)){
       this.errorMessage = "Le format de l'adresse mail est invalide";
       return false;

@@ -14,8 +14,8 @@ export class PlaylistpageComponent implements OnInit {
   playlists: string[] = [];
   @Output() newItemEvent = new EventEmitter<any>();
   new_name_playlist: string;
-  
-  
+
+
   constructor(private msgservice: MessageService, private route: ActivatedRoute,public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class PlaylistpageComponent implements OnInit {
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getPlaylists', data).subscribe(
       reponse => {
         this.playlists = reponse.data;
-        console.log(this.playlists);
       }
     );
   }
@@ -45,7 +44,7 @@ export class PlaylistpageComponent implements OnInit {
   }
 
   onEditPlaylist(newPlaylist: any, oldPlaylist: any): void {
-    if (oldPlaylist !== ''){
+    if (newPlaylist !== ''){
       const index: number = this.playlists.indexOf(oldPlaylist);
       if (index !== -1) {
         this.playlists.splice(index, 1, newPlaylist);
