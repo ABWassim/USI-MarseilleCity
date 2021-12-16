@@ -2,7 +2,11 @@
 
 .container{
     width: 100%;
+<<<<<<< HEAD
     height: 80vh;
+=======
+    height: 70vh;
+>>>>>>> main
     display: flex;
     margin:0;
     max-width: 100%;
@@ -135,14 +139,14 @@ h2{
 }
 
 .btn-deco{
-    background-color: $rose;
-    color: white;
-    padding: 0.8rem 1.5rem 0.8rem 1.5rem;
-    margin-left: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transition: 0.3s;
+  background-color: $rose;
+  color: white;
+  padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+  margin-left: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+  cursor: pointer;
 }
 .btn-deco:hover{
-    background-color: #CE35AD;
-
+  background-color: #CE35AD;
 }
