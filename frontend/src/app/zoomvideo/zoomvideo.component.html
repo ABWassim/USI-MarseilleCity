@@ -21,29 +21,9 @@
     </div>
   </div>
 </div>
+<div style = "margin-top: -45px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+<div style = "margin-top: -45px;" *ngIf="checkMessage.length!=0" class="alert alert-success" role="alert">{{checkMessage}}</div>
 
-
-<!-- <app-navbar></app-navbar>
-<div class="zoom_video">
-    <iframe title="YouTube" width="950" height="500" [src]="getSafeURL()" frameborder="0" allowfullscreen></iframe>
-    <div class="bloc_right">
-        <div class="dropdown">
-            <button class="dropbtn btn my-2 my-sm-0" type="submit">Ajouter</button>
-            <div class="dropdown-content">
-              <a *ngFor="let playlist of playlists" (click)="addVideo(playlist)">{{playlist}}</a>
-            </div>
-        </div>
-        <div class="infoVideo">
-          <p class="title">{{videozoom.title}}</p>
-          <div class="channel"><i class="bi bi-person-fill"></i> <p>{{videozoom.channel}} </p></div>
-          <div class="date"><i class="bi bi-calendar"></i> <p>Postée le {{videozoom.date}}</p></div>
-        </div>
-    </div>
-</div>
-<div class="description">
-  <h2>Description :</h2>
-  <p>{{videozoom.description}}</p>
-</div> -->
 
 <div class="addContainer" *ngIf="!showContent">
   <h1>{{titleAdd}}</h1>

@@ -24,6 +24,8 @@ export class ZoomvideoComponent implements OnInit {
   urlAdd = '';
   titleAdd = '';
   descriptionAdd = '';
+  checkMessage = '';
+  errorMessage = '';
   showContent = true;
 
   constructor(private msgservice: MessageService,
@@ -73,7 +75,14 @@ export class ZoomvideoComponent implements OnInit {
     };
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/addVideo', data).subscribe(
       reponse => {
-          console.log(reponse);
+        if(reponse.status==='ok'){
+          this.checkMessage = 'La vidéo a été ajoutée avec succès !';
+          this.errorMessage = '';
+        }
+        else{
+          this.checkMessage = '';
+          this.errorMessage = "La vidéo n'a pas pu être ajoutée ...";
+        }
       }
     );
   }
