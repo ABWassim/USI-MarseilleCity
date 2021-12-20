@@ -143,6 +143,9 @@
     color: white;
     cursor: pointer;
   }
+  .page-link:active, .page-link:focus {
+    background-color: violet;
+  }
 }
 
 .divSpinner {
