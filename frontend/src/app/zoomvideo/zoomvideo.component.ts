@@ -81,7 +81,7 @@ export class ZoomvideoComponent implements OnInit {
         }
         else{
           this.checkMessage = '';
-          this.errorMessage = "La vidéo n'a pas pu être ajoutée ...";
+          this.errorMessage = "Cette vidéo est déjà dans " + playlist;
         }
       }
     );

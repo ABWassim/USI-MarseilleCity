@@ -41,9 +41,10 @@ export class SearchComponent implements OnInit {
     }
     else {
       const data = {
-        query: this.userquery.query,
+        query: this.userquery.query.replace(/ /g, '+'),
         page: this.userquery.pageNumber
       };
+      console.log(data.query);
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
         reponse => {
           for (const d of reponse.data){
@@ -69,7 +70,7 @@ export class SearchComponent implements OnInit {
 
     if (this.userquery.query !== ''){
       const data = {
-        query: this.userquery.query,
+        query: this.userquery.query.replace(/ /g, '+'),
         page: this.userquery.pageNumber
       };
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(

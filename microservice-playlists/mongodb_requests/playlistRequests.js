@@ -80,4 +80,22 @@ async function rmVideo(db, query, update) {
     });
 }
 
-module.exports = {playlists, videosFromPlaylist, newPlaylist, getPlaylistNameById, dlPlaylist, pushVideo, rmVideo, rnPlaylist}
+async function checkVideoInPlaylist(db, doc) {
+    return new Promise((resolve, reject) => {
+        db.collection("playlists").find(doc).toArray(function(err, result) {
+            if (err) reject(['error', err]);
+            resolve(['ok', result]);
+        });
+    });
+}
+
+module.exports =
+    {playlists,
+    videosFromPlaylist,
+    newPlaylist,
+    getPlaylistNameById,
+    dlPlaylist,
+    pushVideo,
+    rmVideo,
+    rnPlaylist,
+    checkVideoInPlaylist}
