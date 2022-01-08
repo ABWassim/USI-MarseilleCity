@@ -30,7 +30,8 @@ export class SearchComponent implements OnInit {
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', data).subscribe(
         reponse => {
           for (const d of reponse.data){
-            d.title = d.title.replace('&#39;', "'");
+            d.title = d.title.replace(/&#39;/g, "'");
+            d.title = d.title.replace(/&quot;/g, '"');
           }
           this.showSpinner = false;
           this.listeVideos = reponse.data;
@@ -48,7 +49,8 @@ export class SearchComponent implements OnInit {
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
         reponse => {
           for (const d of reponse.data){
-            d.title = d.title.replace('&#39;', "'");
+            d.title = d.title.replace(/&#39;/g, "'");
+            d.title = d.title.replace(/&quot;/g, '"');
           }
           this.showSpinner = false;
           this.listeVideos = reponse.data;
@@ -76,7 +78,8 @@ export class SearchComponent implements OnInit {
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getVideos', data).subscribe(
         reponse => {
           for (const d of reponse.data){
-            d.title = d.title.replace('&#39;', "'");
+            d.title = d.title.replace(/&#39;/g, "'");
+            d.title = d.title.replace(/&quot;/g, '"');
           }
           this.listeVideos = reponse.data;
           this.showSpinner = false;
@@ -92,7 +95,8 @@ export class SearchComponent implements OnInit {
       this.msgservice.sendMessage( environment.debutUrlVideo + '/getTrendings', data).subscribe(
         reponse => {
           for (const d of reponse.data){
-            d.title = d.title.replace('&#39;', "'");
+            d.title = d.title.replace(/&#39;/g, "'");
+            d.title = d.title.replace(/&quot;/g, '"');
           }
           this.showSpinner = false;
           this.listeVideos = reponse.data;

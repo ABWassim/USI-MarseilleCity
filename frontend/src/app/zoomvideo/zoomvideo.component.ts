@@ -75,7 +75,7 @@ export class ZoomvideoComponent implements OnInit {
     };
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/addVideo', data).subscribe(
       reponse => {
-        if(reponse.status==='ok'){
+        if(reponse.status === 'ok'){
           this.checkMessage = 'La vidéo a été ajoutée avec succès !';
           this.errorMessage = '';
         }
@@ -88,7 +88,7 @@ export class ZoomvideoComponent implements OnInit {
   }
 
   tryShowAdd(): void {
-    const p = Math.floor(Math.random());
+    const p = Math.floor(Math.random() * 8);
     if (p === 0){
       this.showContent = false;
       this.msgservice.sendMessage( environment.debutUrlAdverts + '/getRandomAdvert', {}).subscribe(
