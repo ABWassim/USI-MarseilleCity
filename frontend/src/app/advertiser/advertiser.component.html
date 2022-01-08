@@ -9,11 +9,8 @@
             <input [(ngModel)]="newLastName" type="lastName" class="form-control" placeholder={{lastName}}>
         </div>
         <div class="form-group">
-            <input [(ngModel)]="newNationality" type="nationality" class="form-control"  placeholder={{nationality}}>
-        </div>
-        <!-- <div class="form-group">
             <input [(ngModel)]="newCompany" type="company" class="form-control"  placeholder={{company}}>
-        </div> -->
+        </div>
         <div class="form-group">
           <mat-select-country (onCountrySelected)="countrySelected($event)" id = "selectCountry" [placeHolder]="nationality"></mat-select-country>
         </div>
