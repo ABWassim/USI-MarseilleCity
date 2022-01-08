@@ -3,6 +3,7 @@ const playlist = require('./mongodb_requests/playlistRequests').playlists
 const pushVideo = require('./mongodb_requests/playlistRequests').pushVideo
 const auth = require('./auth.js');
 const {ObjectId} = require('mongodb');
+const {checkVideoInPlaylist} = require("./mongodb_requests/playlistRequests");
 
 async function addVideo(req, res, db)
 {
@@ -43,6 +44,22 @@ async function addVideo(req, res, db)
         if (!_video.hasOwnProperty(p)){
             return sendError(res, 'Video object is missing property ' + p);
         }
+    }
+
+    const doc = {
+        _userId: ObjectId(userId),
+        name: _name,
+        videos: {$elemMatch: { id: _video.id }}
+    }
+
+    const [c, existingVideo] = await checkVideoInPlaylist(db, doc);
+
+    if (c === 'error'){
+        return sendError(res, existingVideo);
+    }
+
+    if (existingVideo.length !== 0){
+        return sendError(res, 'Video already in playlist');
     }
 
     const query = {
