@@ -26,7 +26,6 @@ import { DeleteVideoComponent } from './delete-video/delete-video.component';
 import { DeleteVideoDialogComponent } from './delete-video-dialog/delete-video-dialog.component';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { AnnonceComponent } from './annonce/annonce.component';
 import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
 import { NavbarAdvertComponent } from './navbar-advert/navbar-advert.component';
 import { AdvertspageComponent } from './advertspage/advertspage.component';
@@ -60,7 +59,6 @@ import { AdminComponent } from './admin/admin.component';
     DeleteVideoComponent,
     DeleteVideoDialogComponent,
     EditPlaylistComponent,
-    AnnonceComponent,
     InscriptionAnnonceurComponent,
     NavbarAdvertComponent,
     AdvertspageComponent,

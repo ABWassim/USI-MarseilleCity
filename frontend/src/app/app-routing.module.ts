@@ -7,7 +7,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { UserComponent } from './user/user.component';
 import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
 import { PlaylistComponent } from './playlist/playlist.component';
-import {AnnonceComponent} from './annonce/annonce.component';
 import { InscriptionAnnonceurComponent } from './inscription-annonceur/inscription-annonceur.component';
 import { AdvertspageComponent } from './advertspage/advertspage.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
   {path : 'userpage', component : UserComponent, canActivate: [UserGuard]},
   {path : 'playlist/:playlist', component : PlaylistComponent, canActivate: [UserGuard]},
 
-  {path : 'advert', component : AnnonceComponent, canActivate: [AdvertGuard]},
   {path : 'advertspage', component : AdvertspageComponent, canActivate: [AdvertGuard]},
   {path : 'advertiserpage', component : AdvertiserComponent, canActivate: [AdvertGuard]},
 
