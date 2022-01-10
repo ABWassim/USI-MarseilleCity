@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!onSendRequest" class="container">
     <div mat-dialog-content>
       <h1>Rentrez le nouveau nom de l'annonce :</h1>
       <input [placeholder]="placeholderTitle" class = "form-control" [(ngModel)]="nouveauNomAnnonce">

@@ -11,6 +11,7 @@ import { MessageService } from '../message.service';
 export class DeletePlaylistDialogComponent {
 
   playlistName = this.data.playlistName;
+  onSendRequest = false;
 
   constructor(public dialogRef: MatDialogRef<DeletePlaylistDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -21,6 +22,7 @@ export class DeletePlaylistDialogComponent {
   }
 
   onClick(): void {
+    this.onSendRequest = true;
     const data = {
       name: this.playlistName,
     };

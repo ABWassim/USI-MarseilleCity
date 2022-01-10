@@ -111,7 +111,7 @@ export class UserComponent implements OnInit {
   }
 
   disconnect(): void{
-    this.authservice.profile = -1;
+    localStorage.removeItem('profile');
     this.router.navigateByUrl('login');
   }
 }

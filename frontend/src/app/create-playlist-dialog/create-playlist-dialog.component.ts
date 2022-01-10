@@ -11,6 +11,7 @@ import { MessageService } from '../message.service';
 export class CreatePlaylistDialogComponent {
   nom_nouvelle_playlist = '';
   errorMessage = '';
+  onSendRequest = false;
 
   constructor(public dialogRef: MatDialogRef<CreatePlaylistDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,6 +26,7 @@ export class CreatePlaylistDialogComponent {
       this.errorMessage = 'Le nom de la nouvelle playlist est vide';
     }
     else {
+      this.onSendRequest = true;
       const data = {
         name: this.nom_nouvelle_playlist,
       };
@@ -35,6 +37,7 @@ export class CreatePlaylistDialogComponent {
             this.dialogRef.close(this.nom_nouvelle_playlist);
           }
           else {
+            this.onSendRequest = false;
             this.errorMessage = 'La playlist existe déjà';
           }
         }

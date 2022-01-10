@@ -28,6 +28,7 @@ export class PlaylistpageComponent implements OnInit {
   }
 
   onCreatePlaylist(newPlaylist: any): void {
+    if (newPlaylist === undefined) return;
     const name = newPlaylist;
     if (name !== ''){
       this.playlists.unshift(name);
@@ -35,6 +36,7 @@ export class PlaylistpageComponent implements OnInit {
   }
 
   onDeletePlaylist(oldPlaylist: any): void {
+    if (oldPlaylist === undefined) return;
     if (oldPlaylist !== ''){
       const index: number = this.playlists.indexOf(oldPlaylist);
       if (index !== -1) {
@@ -44,6 +46,7 @@ export class PlaylistpageComponent implements OnInit {
   }
 
   onEditPlaylist(newPlaylist: any, oldPlaylist: any): void {
+    if (newPlaylist === undefined) return;
     if (newPlaylist !== ''){
       const index: number = this.playlists.indexOf(oldPlaylist);
       if (index !== -1) {

@@ -10,7 +10,6 @@ import {environment} from '../environments/environment';
 export class AuthService {
 
   isAuthenticated = false;
-  profile = -1;
 
   constructor(private msgservice: MessageService) { }
 
@@ -25,7 +24,7 @@ export class AuthService {
   finalizeAuthentication(reponse: Phpdata): void{
     if (reponse.status === 'ok'){
       this.isAuthenticated = true;
-      this.profile = reponse.data;
+      localStorage.setItem('profile', reponse.data);
     }
     else {
       this.isAuthenticated = false;

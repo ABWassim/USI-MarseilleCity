@@ -11,6 +11,7 @@ import {environment} from "../../environments/environment";
 export class DeleteVideoDialogComponent implements OnInit {
 
   videoTitle = this.data.videoTitle;
+  onSendRequest = false;
 
   constructor(public dialogRef: MatDialogRef<DeleteVideoDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,6 +25,7 @@ export class DeleteVideoDialogComponent implements OnInit {
   }
 
   onClick(): void {
+    this.onSendRequest = true;
     const data = {
       name: this.data.playlistName,
       videoId: this.data.videoId

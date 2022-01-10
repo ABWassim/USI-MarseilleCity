@@ -27,3 +27,7 @@ h1
   color: black;
 }
 
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: white;
+}
+

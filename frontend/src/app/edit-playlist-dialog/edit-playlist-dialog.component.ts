@@ -12,6 +12,7 @@ export class EditPlaylistDialogComponent {
   nom_nouvelle_playlist:string;
   old_name= this.data.playlistName;
   errorMessage: string;
+  onSendRequest = false;
 
   constructor(public dialogRef: MatDialogRef<EditPlaylistDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -22,6 +23,7 @@ export class EditPlaylistDialogComponent {
   }
 
   onClick(): void {
+    this.onSendRequest = true;
     const data = {
       nameOld: this.old_name,
       nameNew: this.nom_nouvelle_playlist
@@ -35,9 +37,11 @@ export class EditPlaylistDialogComponent {
         else {
           if (this.nom_nouvelle_playlist === ''){
             this.errorMessage = 'Le nouveau nom de la playlist est vide';
+            this.onSendRequest = false;
           }
           else {
             this.errorMessage = 'Le nom de playlist existe déjà';
+            this.onSendRequest = false;
           }
         }
       }

@@ -11,6 +11,7 @@ import {environment} from "../../environments/environment";
 export class DeleteAdvertDialogComponent implements OnInit {
 
   advertTitle = this.data.advertTitle;
+  onSendRequest = false;
 
   constructor(public dialogRef: MatDialogRef<DeleteAdvertDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,6 +25,7 @@ export class DeleteAdvertDialogComponent implements OnInit {
   }
 
   onClick(): void {
+    this.onSendRequest = true;
     const data = {
       title: this.advertTitle,
     };

@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!onSendRequest" class="container">
   <div mat-dialog-content>
     <h1>Voulez-vous vraiment supprimer {{videoTitle}} de votre playlist ?</h1>
   </div>
@@ -8,4 +8,5 @@
   </div>
 </div>
 
+<mat-spinner *ngIf="onSendRequest"></mat-spinner>
 

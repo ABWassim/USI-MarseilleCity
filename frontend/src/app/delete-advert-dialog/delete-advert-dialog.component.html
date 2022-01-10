@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!onSendRequest" class="container">
     <div mat-dialog-content>
       <h1>Voulez-vous vraiment supprimer votre annonce {{advertTitle}} ?</h1>
     </div>
@@ -6,4 +6,6 @@
       <button mat-button (click)="onNoClick()">Annuler</button>
       <button mat-button (click)="onClick()">Supprimer</button>
     </div>
-  </div>
+</div>
+
+<mat-spinner *ngIf="onSendRequest"></mat-spinner>

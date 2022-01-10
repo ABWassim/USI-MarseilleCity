@@ -11,26 +11,30 @@ import { MessageService } from '../message.service';
 })
 export class AdvertspageComponent implements OnInit {
   adverts: any[] = [];
+  showSpinner = false;
 
   constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlAdverts + '/getAdverts', data).subscribe(
       reponse => {
+        this.showSpinner = false;
         this.adverts = reponse.data;
-        console.log(this.adverts);
       }
     );
   }
 
   onCreateAdvert(newAdvert: any): void {
+    if (newAdvert === undefined) return;
     if (newAdvert !== ''){
       this.adverts.unshift(newAdvert);
     }
   }
 
   onDeleteAdvert(oldAdvert: any): void{
+    if (oldAdvert === undefined) return;
     if (oldAdvert !== ''){
       let trouve = false;
       let i = 0;
@@ -49,6 +53,7 @@ export class AdvertspageComponent implements OnInit {
   }
 
   onEditAdvert(editedAdvert: any, oldTitle: string): void {
+    if (editedAdvert === undefined) return;
     if (editedAdvert !== ''){
       let i = 0;
       let trouve = false;

@@ -115,7 +115,7 @@ export class AdvertiserComponent implements OnInit {
     this.newNationality = event.alpha3Code;
   }
   disconnect(): void{
-    this.authservice.profile = -1;
+    localStorage.removeItem('profile');
     this.router.navigateByUrl('login');
   }
 }

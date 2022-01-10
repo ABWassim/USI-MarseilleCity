@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!onSendRequest" class="container">
     <div mat-dialog-content>
         <h1>Veuillez entrer le nom de la nouvelle playlist</h1>
         <input class = "form-control" [(ngModel)]="nom_nouvelle_playlist">
@@ -10,4 +10,6 @@
     </div>
 </div>
 
-  
+
+<mat-spinner *ngIf="onSendRequest"></mat-spinner>
+
