@@ -48,7 +48,7 @@ async function createAdvertAccount(req, res, db)
         return sendError(res, newUserId);
     }
     auth.setSessionCookie(req, res, {userId: newUserId});
-    sendMessage(res, 'Account created and user authenticated');
+    sendMessage(res, 1);
 }
 
 module.exports = createAdvertAccount

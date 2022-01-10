@@ -35,6 +35,7 @@ export class InscriptionAnnonceurComponent implements OnInit {
       };
       this.msgservice.sendMessage( environment.debutUrlUser + '/createAdvertAccount', data).subscribe(
         reponse => {
+          this.authservice.finalizeAuthentication(reponse);
           if (reponse.status === 'ok'){
             this.errorMessage = '';
             this.router.navigateByUrl('/advertspage');

@@ -44,7 +44,7 @@ async function createAccount(req, res, db)
         return sendError(res, newUserId);
     }
     auth.setSessionCookie(req, res, {userId: newUserId});
-    sendMessage(res, 'Account created and user authenticated');
+    sendMessage(res, 0);
 }
 
 module.exports = createAccount

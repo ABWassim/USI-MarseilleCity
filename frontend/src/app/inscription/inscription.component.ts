@@ -33,6 +33,7 @@ export class InscriptionComponent implements OnInit {
       };
       this.msgservice.sendMessage( environment.debutUrlUser + '/createAccount', data).subscribe(
         reponse => {
+          this.authservice.finalizeAuthentication(reponse);
           if (reponse.status === 'ok'){
             this.errorMessage = '';
             this.router.navigateByUrl('/search');
