@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
 import {UserqueryService} from '../userquery.service';
 import {Video} from '../video';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-search',
@@ -19,9 +20,14 @@ export class SearchComponent implements OnInit {
   showPaginator = false;
   showVideos = false;
 
-  constructor(private userquery: UserqueryService, private msgservice: MessageService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private userquery: UserqueryService,
+              private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Rechercher');
     this.query = this.userquery.query;
     if (this.query === ''){
       const data = {

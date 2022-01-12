@@ -1,21 +1,21 @@
 <div *ngIf="!onSendRequest" class="container">
-    <div mat-dialog-content>
-      <h1>Rentrez le nouveau nom de l'annonce :</h1>
-      <input [placeholder]="placeholderTitle" class = "form-control" [(ngModel)]="nouveauNomAnnonce">
-    </div>
-    <div mat-dialog-content>
-        <h1>Rentrez la nouvelle description de l'annonce :</h1>
-        <input [placeholder]="placeholderDescription" class = "form-control" [(ngModel)]="nouvelleDescription">
-    </div>
-    <div mat-dialog-content>
-      <h1>Séléctionnez la nouvelle image de l'annonce :</h1>
-      <input (change) = "onFileSelected($event)" type="file" class="form-control" type="file" id="formFile">
-    </div>
-    <div mat-dialog-actions>
-      <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
-      <button mat-button (click)="onNoClick()">Annuler</button>
-      <button mat-button (click)="onClick()">Modifier</button>
-    </div>
+  <div mat-dialog-content>
+    <h1>Rentrez le nouveau nom de l'annonce :</h1>
+    <input [placeholder]="placeholderTitle" class = "form-control" [(ngModel)]="nouveauNomAnnonce">
+    <h1>Rentrez la nouvelle description de l'annonce :</h1>
+    <input [placeholder]="placeholderDescription" class = "form-control" [(ngModel)]="nouvelleDescription">
+    <h1>Séléctionnez la nouvelle image de l'annonce (Optionnel - PNG ou JPEG seulement) :</h1>
+    <input accept=".png, .jpg, .jpeg" (change) = "onFileSelected($event)" type="file" class="form-control" type="file" id="formFile">
+    <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-button (click)="onClick()">Créer</button>
+  </div>
 </div>
 
 <mat-spinner *ngIf="onSendRequest"></mat-spinner>
+
+
+

@@ -4,8 +4,8 @@
         <input class = "form-control" [(ngModel)]="nomNouvelleAnnonce">
         <h1>Veuillez entrer la description de la nouvelle annonce : </h1>
         <input class = "form-control" [(ngModel)]="descriptionAnnonce">
-        <h1>Choisisez votre image : </h1>
-        <input (change) = "onFileSelected($event)" type="file" class="form-control" type="file" id="formFile">
+        <h1>Choisissez votre image (PNG ou JPEG seulement) : </h1>
+        <input accept=".png, .jpg, .jpeg" (change) = "onFileSelected($event)" type="file" class="form-control" type="file" id="formFile">
         <div style = "margin-top: 20px;" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
     </div>
 

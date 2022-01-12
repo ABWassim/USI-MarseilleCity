@@ -26,6 +26,7 @@ export class CreateAdvertDialogComponent implements OnInit {
 
   onFileSelected(event): void{
     this.imageAnnonce = event.target.files[0];
+    console.log(this.imageAnnonce.type);
   }
 
   onClick(): void {
@@ -34,6 +35,9 @@ export class CreateAdvertDialogComponent implements OnInit {
     }
     else if (this.imageAnnonce === null){
       this.errorMessage = 'Veuillez rentrer une image';
+    }
+    else if (!['image/jpeg', 'image/jpg', 'image/png'].includes(this.imageAnnonce.type)){
+      this.errorMessage = 'Veuillez selectionner une image au format PNG ou JPEG';
     }
     else {
       this.onSendRequest = true;

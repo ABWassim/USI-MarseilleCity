@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth.service';
 import { MessageService } from '../message.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-inscription',
@@ -12,14 +13,16 @@ import { MessageService } from '../message.service';
 export class InscriptionComponent implements OnInit {
   email = '';
   password = '';
+  confPassword = '';
   errorMessage = '';
   firstName = '';
   lastName = '';
   nationality = '';
 
-  constructor(private authservice: AuthService, private router: Router, private msgservice: MessageService) { }
+  constructor(private authservice: AuthService, private router: Router, private msgservice: MessageService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("WatchIt - S'inscrire");
   }
 
   affichage(): void {
@@ -70,6 +73,10 @@ export class InscriptionComponent implements OnInit {
     }
     if (this.nationality === ''){
       this.errorMessage = "Veuillez selectionner une nationalité";
+      return false;
+    }
+    if (this.password !== this.confPassword){
+      this.errorMessage = "Le mot de passe et sa confirmation sont différents";
       return false;
     }
     return true;

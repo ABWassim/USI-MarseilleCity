@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-admin',
@@ -13,9 +14,13 @@ export class AdminComponent implements OnInit {
   users: any[] = [];
   user: any;
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              public dialog: MatDialog,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Administration');
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlUser + '/getUsers', data).subscribe(
       reponse => {

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -13,9 +14,12 @@ export class AdvertspageComponent implements OnInit {
   adverts: any[] = [];
   showSpinner = false;
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Mes annonces');
     this.showSpinner = true;
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlAdverts + '/getAdverts', data).subscribe(

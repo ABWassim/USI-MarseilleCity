@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from '../message.service';
 import {environment} from '../../environments/environment';
-import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer, SafeResourceUrl, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-zoomvideo',
@@ -31,9 +31,11 @@ export class ZoomvideoComponent implements OnInit {
   constructor(private msgservice: MessageService,
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,
-              private router: Router){}
+              private router: Router,
+              private titleService: Title){}
 
   ngOnInit(): void {
+    this.titleService.setTitle("Watchit - Visionner")
     this.tryShowAdd();
     const data = {
       id: this.idVideo,

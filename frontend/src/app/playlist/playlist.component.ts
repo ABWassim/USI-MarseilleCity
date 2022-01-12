@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-playlist',
@@ -12,9 +13,12 @@ export class PlaylistComponent implements OnInit {
   titleplaylist = this.route.snapshot.paramMap.get('playlist');
   playlist : any[]=[];
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - ' + this.titleplaylist);
     const data = {
       name: this.titleplaylist
     };

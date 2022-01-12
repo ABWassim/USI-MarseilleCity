@@ -45,8 +45,11 @@ export class EditAdvertDialogComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.nouveauNomAnnonce === ''){
-      this.errorMessage = 'Le nom de la nouvelle annonce est vide';
+    if (this.nouveauNomAnnonce === '' && this.nouvelleDescription === '' && this.imageAnnonce === null){
+      this.errorMessage = 'Veuillez spécifier au moins un champ';
+    }
+    else if (this.imageAnnonce !== null && !['image/jpeg', 'image/jpg', 'image/png'].includes(this.imageAnnonce.type)){
+      this.errorMessage = 'Veuillez selectionner une image au format PNG ou JPEG';
     }
     else {
       this.onSendRequest = true;

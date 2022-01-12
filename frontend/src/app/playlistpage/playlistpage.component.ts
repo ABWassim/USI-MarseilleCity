@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { EditPlaylistDialogComponent } from '../edit-playlist-dialog/edit-playlist-dialog.component';
 import { MessageService } from '../message.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-playlistpage',
@@ -16,9 +17,13 @@ export class PlaylistpageComponent implements OnInit {
   new_name_playlist: string;
 
 
-  constructor(private msgservice: MessageService, private route: ActivatedRoute,public dialog: MatDialog) { }
+  constructor(private msgservice: MessageService,
+              private route: ActivatedRoute,
+              public dialog: MatDialog,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Mes playlists');
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlPlaylist + '/getPlaylists', data).subscribe(
       reponse => {

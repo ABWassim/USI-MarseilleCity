@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="connexion"> 
+    <div class="connexion">
         <div class="connexion-container">
             <div class="form-group">
                 <input [(ngModel)]="email" class="form-control" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" required>
@@ -18,8 +18,7 @@
             <div style = "margin-top: 10px; margin-left: 10px" *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
             <button (click)="affichage()" type="submit" class="btn btn-primary">Se connecter</button>
             <p>Vous n’avez pas de compte ? <a [routerLink]="['/inscription']">S’inscrire.</a></p>
-            <p>Vous êtes annonceur ? <a [routerLink]="['/inscriptionAnnonceur']">Inscrivez vous ici.</a></p>
+            <p>Vous êtes annonceur ? <a [routerLink]="['/inscriptionAnnonceur']">Inscrivez-vous ici.</a></p>
         </div>
-    </div> 
+    </div>
 </div>
-  

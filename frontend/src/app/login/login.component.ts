@@ -5,6 +5,7 @@ import {MessageService} from '../message.service';
 import {Phpdata} from '../phpdata';
 import {AuthService} from '../auth.service';
 import {environment} from '../../environments/environment';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,10 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   phpData: Phpdata = {status: '', data: null};
 
-  constructor(private authservice: AuthService, private router: Router) { }
+  constructor(private authservice: AuthService, private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle('WatchIt - Se connecter');
   }
 
   affichage(): void {

@@ -1,5 +1,4 @@
 @import "../../variable.scss";
-
 .container{
   padding: 1rem;
 }
@@ -18,10 +17,6 @@ h1
   margin-bottom: 1rem;
 }
 
-.form-control::placeholder {
-  color: $violetbouton;
-}
-
 .mat-dialog-actions{
   justify-content: center;
   align-items: center;
@@ -35,3 +30,4 @@ h1
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
   stroke: white;
 }
+

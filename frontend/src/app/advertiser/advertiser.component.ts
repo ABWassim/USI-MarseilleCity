@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
 import {AuthService} from "../auth.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-advertiser',
@@ -29,9 +30,11 @@ export class AdvertiserComponent implements OnInit {
   constructor(private msgservice: MessageService,
               private route: ActivatedRoute,
               private authservice: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Mon profil');
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlUser + '/getAdvertInformations', data).subscribe( //changer la route
       reponse => {

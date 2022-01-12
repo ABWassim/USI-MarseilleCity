@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../message.service';
 import {AuthService} from "../auth.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user',
@@ -27,9 +28,11 @@ export class UserComponent implements OnInit {
   constructor(private msgservice: MessageService,
               private route: ActivatedRoute,
               private router: Router,
-              private authservice: AuthService) { }
+              private authservice: AuthService,
+              private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WatchIt - Mon profil');
     const data = {};
     this.msgservice.sendMessage( environment.debutUrlUser + '/getUserInformations', data).subscribe(
       reponse => {
